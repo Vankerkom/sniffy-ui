@@ -13,8 +13,27 @@ export const loadStateFailure = createAction(
   props<{ error: any }>()
 );
 
-
 export const start = createAction('[Action Bar] Start Sniffing');
+
+export const startFailure = createAction(
+  '[Action Bar] Start Sniffing Failure',
+  props<{ error: any }>()
+);
+
 export const stop = createAction('[Action Bar] Stop Sniffing');
+
+export const stopSuccess = createAction('[Action Bar] Stop Sniffing Success');
+
+export const stopFailure = createAction(
+  '[Action Bar] Stop Sniffing Failure',
+  props<{ error: any }>()
+);
+
 export const pause = createAction('[Action Bar] Pause Sniffing');
+
+export const pauseFailure = createAction(
+  '[Action Bar] Pause Sniffing Failure',
+  props<{ error: any }>()
+);
+
 export const reset = createAction('[Action Bar] Reset Sniffing');

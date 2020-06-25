@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-action-bar',
   templateUrl: './action-bar.component.html',
   styleUrls: ['./action-bar.component.scss']
 })
-export class ActionBarComponent implements OnInit {
+export class ActionBarComponent {
 
-  constructor() { }
+  @Input() active = false;
 
-  ngOnInit(): void {
-  }
+  @Output() start = new EventEmitter<void>();
+  @Output() stop = new EventEmitter<void>();
 
 }

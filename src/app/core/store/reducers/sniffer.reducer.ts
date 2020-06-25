@@ -20,5 +20,7 @@ export const reducer = createReducer(
     ...state,
     active: payload.active,
     loaded: true,
-  }))
+  })),
+
+  on(SnifferActions.stopSuccess, (state) => ({ ...state, active: false }))
 );

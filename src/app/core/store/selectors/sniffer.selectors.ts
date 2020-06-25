@@ -9,3 +9,8 @@ export const selectLoaded = createSelector(
   selectSnifferState,
   state => state.loaded,
 );
+
+export const selectActive = createSelector(
+  selectSnifferState,
+  state => state.active
+);

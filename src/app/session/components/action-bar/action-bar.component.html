@@ -8,34 +8,18 @@
     <mat-icon>save</mat-icon>
   </button>
 
-  <button mat-icon-button>
+  <button mat-icon-button [disabled]="active" (click)="start.emit()">
     <mat-icon>play_arrow</mat-icon>
   </button>
 
-  <button mat-icon-button disabled>
+  <button mat-icon-button [disabled]="!active" (click)="stop.emit()">
     <mat-icon>stop</mat-icon>
-  </button>
-
-  <button mat-icon-button disabled>
-    <mat-icon>pause</mat-icon>
   </button>
 
   <button mat-icon-button disabled>
     <mat-icon>replay</mat-icon>
   </button>
 
-  <button mat-icon-button disabled>
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-
-  <button mat-icon-button disabled>
-    <mat-icon>arrow_forward</mat-icon>
-  </button>
-
   <span class="spacer"></span>
-
-  <button mat-icon-button>
-    <mat-icon>share</mat-icon>
-  </button>
 
 </mat-toolbar>

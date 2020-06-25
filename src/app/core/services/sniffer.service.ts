@@ -8,9 +8,25 @@ import { SnifferStateChangedEvent } from '../events';
   providedIn: 'root',
 })
 export class SnifferService {
-
   public getState(): Observable<SnifferStateChangedEvent> {
-    return this.http.get<SnifferStateChangedEvent>(`${environment.apiBaseUri}/sniffer`);
+    return this.http.get<SnifferStateChangedEvent>(
+      `${environment.apiBaseUri}/sniffer`
+    );
+  }
+
+  public start(): Observable<SnifferStateChangedEvent> {
+    // TODO Interface and procol.
+    return this.http.post<SnifferStateChangedEvent>(
+      `${environment.apiBaseUri}/sniffer/start`,
+      { interfaceName: '', protocolId: 0 }
+    );
+  }
+
+  public stop(): Observable<void> {
+    return this.http.post<void>(
+      `${environment.apiBaseUri}/sniffer/stop`,
+      {  }
+    );
   }
 
   constructor(private readonly http: HttpClient) {}

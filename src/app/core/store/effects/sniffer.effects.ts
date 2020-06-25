@@ -7,6 +7,7 @@ import {
   map,
   withLatestFrom,
   filter,
+  exhaustMap,
 } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -38,6 +39,22 @@ export class SnifferEffects {
       map((_) => SnifferActions.loadState())
     )
   );
+
+  startSniffing$ = createEffect(() => this.actions$.pipe(
+    ofType(SnifferActions.start),
+    exhaustMap(() => this.snifferService.start().pipe(
+      map(payload => SnifferActions.loadStateSuccess({ payload })),
+      catchError(error => of(SnifferActions.startFailure({ error }))),
+    )),
+  ));
+
+  stopSniffing$ = createEffect(() => this.actions$.pipe(
+    ofType(SnifferActions.stop),
+    exhaustMap(() => this.snifferService.stop().pipe(
+      map(_ => SnifferActions.stopSuccess()),
+      catchError(error => of(SnifferActions.stopFailure({ error }))),
+    )),
+  ));
 
   constructor(
     private store: Store<any>,
