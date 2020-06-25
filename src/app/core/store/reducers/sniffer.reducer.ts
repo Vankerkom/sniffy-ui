@@ -5,10 +5,12 @@ export const snifferFeatureKey = 'sniffer';
 
 export interface State {
   active: boolean;
+  loaded: boolean;
 }
 
 export const initialState: State = {
   active: false,
+  loaded: false,
 };
 
 export const reducer = createReducer(
@@ -17,5 +19,6 @@ export const reducer = createReducer(
   on(SnifferActions.loadStateSuccess, (state, { payload }) => ({
     ...state,
     active: payload.active,
+    loaded: true,
   }))
 );
