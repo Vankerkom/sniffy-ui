@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { WebSocketEventsService } from './core/services/web-socket-events.service';
+
+import * as fromRoot from '@core/store/reducers';
+import * as WebSocketActions from '@core/store/actions/web-socket.actions';
+import * as WebSocketSelectors  from '@core/store/selectors/web-socket.selectors';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +14,8 @@ import { WebSocketEventsService } from './core/services/web-socket-events.servic
 export class AppComponent {
   readonly connected$: Observable<boolean>;
 
-  constructor(private readonly webSocketEventsService: WebSocketEventsService) {
-    this.connected$ = this.webSocketEventsService.connected$;
+  constructor(private readonly store: Store<fromRoot.State>) {
+    this.connected$ = this.store.pipe(select(WebSocketSelectors.selectConnected));
+    this.store.dispatch(WebSocketActions.connect());
   }
 }

@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducers, metaReducers } from '../store';
+import { reducers, metaReducers } from './store/reducers';
 import { environment } from '@environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { WebSocketEffects } from './store/effects/web-socket.effects';
 
 @NgModule({
   declarations: [],
@@ -19,7 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
       },
     }),
     !environment.production ? StoreDevtoolsModule.instrument({ }) : [],
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([WebSocketEffects]),
   ],
 })
 export class CoreModule {

@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { webSocket, WebSocketSubject } from "rxjs/webSocket";
+import { environment } from '@environments/environment';
+import { Action } from '@ngrx/store';
 
 import { EventContainer } from '../models';
-import { environment } from '@environments/environment';
 import { EventId } from '../models/event-id';
+
+import * as WebSocketActions from '../store/actions/web-socket.actions';
 
 const EVENT_TYPES_MAP = new Map<number, string>([
   // [EventId.CHANNEL_CREATED, createChannelActions.CreateChannelSuccess.type],
@@ -15,20 +18,38 @@ const EVENT_TYPES_MAP = new Map<number, string>([
 })
 export class WebSocketEventsService {
 
-  private connectedSubject = new BehaviorSubject(false);
-  private websocket: WebSocketSubject<EventContainer>;
+  private socket: WebSocketSubject<EventContainer>;
 
-  readonly connected$ = this.connectedSubject.asObservable();
-  readonly events$: Observable<EventContainer>;
+  readonly opened$ = new Subject<Event>();
+  readonly closed$ = new Subject<CloseEvent>();
 
-  constructor() {
-    this.websocket = webSocket({
-      url: environment.eventsWebSocketUri,
-      openObserver: { next: _ => this.connectedSubject.next(true) },
-      closeObserver: { next: _ => this.connectedSubject.next(false) },
+  public connect() {
+    if (this.socket) {
+      this.socket.complete();
+      this.socket = null;
+    }
+
+    return this.createWebSocket(environment.eventsWebSocketUri);
+  }
+
+  private createWebSocket(uri: string): WebSocketSubject<EventContainer> {
+    this.socket = webSocket<EventContainer>({
+      url: uri,
+      openObserver: this.opened$,
+      closeObserver: this.closed$,
     });
 
-    // this.events$ = this.websocket.asObservable();
+    return this.socket;
+  }
+
+  public mapMessage(container: EventContainer): Action {
+    const type = EVENT_TYPES_MAP.get(container.i) || false;
+
+    if (type) {
+      return { type, payload: container.d } as Action;
+    }
+
+    return WebSocketActions.unknownMessageReceived({ id: container.i, payload: container.d });
   }
 
 }
