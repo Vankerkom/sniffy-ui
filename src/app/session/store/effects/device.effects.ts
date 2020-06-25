@@ -9,7 +9,6 @@ import { SnifferActions } from '@app/core/store/actions';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectDeviceModalComponent } from '@app/session/containers/select-device-modal/select-device-modal.component';
 import { DeviceModalActions } from '../actions';
-import { SelectDeviceDialogResults } from '@app/session/models';
 import { StartSniffingRequest } from '@app/core/models/start-sniffing-request';
 
 @Injectable()
@@ -49,6 +48,6 @@ export class DeviceEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly devicesService: DevicesService,
-    private readonly matDialog: MatDialog
+    private readonly matDialog: MatDialog,
   ) {}
 }

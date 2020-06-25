@@ -4,7 +4,7 @@
 
     <p>Please select a device and protocol to start sniffing.</p>
 
-    <div *ngIf="loaded$ | async; else loading">
+    <ng-container *ngIf="loaded$ | async; else loading">
       <mat-form-field class="example-full-width">
         <input type="text" placeholder="Select a network device" matInput formControlName="device"
           [matAutocomplete]="auto">
@@ -14,7 +14,7 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </div>
+    </ng-container>
 
 
   </mat-dialog-content>
