@@ -1,5 +1,5 @@
 <app-action-bar [active]="snifferActive$ | async" (start)="start()" (stop)="stop()"></app-action-bar>
 
-<app-session-tab-nav [links]="navLinks"></app-session-tab-nav>
+<app-session-tab-nav [sessions]="sessions$ | async"></app-session-tab-nav>
 
 <router-outlet></router-outlet>

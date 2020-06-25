@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Session } from '@app/core/models';
 
 @Component({
   selector: 'app-session-tab-nav',
@@ -8,6 +9,6 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 })
 export class SessionTabNavComponent {
 
-  @Input() links: Array<any>;
+  @Input() sessions: Array<Session>;
 
 }

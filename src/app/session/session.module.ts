@@ -9,6 +9,8 @@ import { SessionTabNavComponent } from './components/session-tab-nav/session-tab
 import { SessionPacketsListComponent } from './components/session-packets-list/session-packets-list.component';
 import { SessionPageComponent } from './containers/session-page/session-page.component';
 import { ActionBarComponent } from './components/action-bar/action-bar.component';
+import { LoadSessionsGuard } from './guards/load-sessions.guard';
+import { LoadSessionGuard } from './guards/load-session.guard';
 
 
 @NgModule({
@@ -24,6 +26,10 @@ import { ActionBarComponent } from './components/action-bar/action-bar.component
     CommonModule,
     SessionRoutingModule,
     SharedModule,
-  ]
+  ],
+  providers: [
+    LoadSessionsGuard,
+    LoadSessionGuard,
+  ],
 })
 export class SessionModule { }

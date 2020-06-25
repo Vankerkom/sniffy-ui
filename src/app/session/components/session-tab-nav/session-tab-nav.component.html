@@ -1,8 +1,8 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+  <a mat-tab-link *ngFor="let session of sessions" [routerLink]="['/sessions/', session.id]" routerLinkActive #rla="routerLinkActive"
     [routerLinkActiveOptions]="{exact: true}" [active]="rla.isActive">
     <span matBadge="0" matBadgeOverlap="false" matBadgeSize="small">
-      {{link.label}}
+      {{session.name}}
     </span>
   </a>
 </nav>

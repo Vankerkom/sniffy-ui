@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import * as fromRoot from '@core/store/reducers';
 import { SnifferActions } from '@core/store/actions';
 import * as SnifferSelectors from '@app/core/store/selectors/sniffer.selectors';
+import { Session } from '@app/core/models';
+import { SessionSelectors } from '@app/core/store/selectors';
 
 @Component({
   selector: 'app-session-shell',
@@ -14,18 +16,13 @@ import * as SnifferSelectors from '@app/core/store/selectors/sniffer.selectors';
 export class SessionShellComponent implements OnInit {
 
   snifferActive$: Observable<boolean>;
-
-  readonly navLinks = [
-    { path: '/sessions', label: 'Sessions' },
-    { path: '/sessions/1', label: 'Session 1' },
-    { path: '/sessions/2', label: 'Session 2' },
-    { path: '/sessions/3', label: 'Session 3' },
-  ];
+  sessions$: Observable<Array<Session>>;
 
   constructor(private readonly store: Store<fromRoot.State>) {}
 
   ngOnInit(): void {
     this.snifferActive$ = this.store.pipe(select(SnifferSelectors.selectActive));
+    this.sessions$ = this.store.pipe(select(SessionSelectors.selectAll));
   }
 
   start(): void {
