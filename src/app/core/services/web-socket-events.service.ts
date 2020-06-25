@@ -4,6 +4,11 @@ import { webSocket, WebSocketSubject } from "rxjs/webSocket";
 
 import { EventContainer } from '../models';
 import { environment } from '@environments/environment';
+import { EventId } from '../models/event-id';
+
+const EVENT_TYPES_MAP = new Map<number, string>([
+  // [EventId.CHANNEL_CREATED, createChannelActions.CreateChannelSuccess.type],
+]);
 
 @Injectable({
   providedIn: 'root'

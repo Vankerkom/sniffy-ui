@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "sniffy-ui"
+  "defaultProject": "sniffy-ui",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
