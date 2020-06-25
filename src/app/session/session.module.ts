@@ -8,6 +8,7 @@ import { SessionShellComponent } from './containers/session-shell/session-shell.
 import { SessionTabNavComponent } from './components/session-tab-nav/session-tab-nav.component';
 import { SessionPacketsListComponent } from './components/session-packets-list/session-packets-list.component';
 import { SessionPageComponent } from './containers/session-page/session-page.component';
+import { ActionBarComponent } from './components/action-bar/action-bar.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SessionPageComponent } from './containers/session-page/session-page.com
     SessionTabNavComponent,
     SessionPacketsListComponent,
     SessionPageComponent,
+    ActionBarComponent,
   ],
   imports: [
     CommonModule,
