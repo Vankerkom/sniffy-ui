@@ -1,18 +1,29 @@
-<form>
+<form [formGroup]="selectDeviceForm" (submit)="onSubmit()">
   <h2 mat-dialog-title>Select Device And Protcol</h2>
-  <mat-dialog-content class="mat-typography">
+  <mat-dialog-content>
 
     <p>Please select a device and protocol to start sniffing.</p>
 
-    <p *ngIf="loaded$ | async; else loading" >{{ devices$ | async | json }}</p>
+    <div *ngIf="loaded$ | async; else loading">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Select a network device" matInput formControlName="device"
+          [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of devices$ | async" [value]="option">
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
 
-    <ng-template #loading>
-      <p>Loading... please wait...</p>
-    </ng-template>
 
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Start</button>
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button mat-button type="submit" cdkFocusInitial>Start</button>
   </mat-dialog-actions>
 </form>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

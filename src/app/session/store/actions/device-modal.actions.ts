@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { StartSniffingRequest } from '@app/core/models';
 
 export const showSelectDeviceModal = createAction(
   '[Session Page] Show Select Devices'
@@ -6,7 +7,7 @@ export const showSelectDeviceModal = createAction(
 
 export const selectDeviceConfirmed = createAction(
   '[Device Modal] Select Devices Confirmed',
-  props<{ payload: any }>()
+  props<{ payload: StartSniffingRequest }>()
 );
 
 export const selectDeviceDismissed = createAction(

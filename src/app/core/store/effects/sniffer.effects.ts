@@ -43,7 +43,7 @@ export class SnifferEffects {
 
   startSniffing$ = createEffect(() => this.actions$.pipe(
     ofType(DeviceModalActions.selectDeviceConfirmed),
-    exhaustMap(() => this.snifferService.start().pipe(
+    exhaustMap(action => this.snifferService.start(action.payload).pipe(
       map(payload => SnifferActions.loadStateSuccess({ payload })),
       catchError(error => of(SnifferActions.startFailure({ error }))),
     )),

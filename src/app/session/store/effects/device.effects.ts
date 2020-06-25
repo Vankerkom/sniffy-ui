@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectDeviceModalComponent } from '@app/session/containers/select-device-modal/select-device-modal.component';
 import { DeviceModalActions } from '../actions';
 import { SelectDeviceDialogResults } from '@app/session/models';
+import { StartSniffingRequest } from '@app/core/models/start-sniffing-request';
 
 @Injectable()
 export class DeviceEffects {
@@ -30,7 +31,7 @@ export class DeviceEffects {
       ofType(SnifferActions.start),
       switchMap(() =>
         this.matDialog
-          .open<SelectDeviceModalComponent, any, SelectDeviceDialogResults>(
+          .open<SelectDeviceModalComponent, any, StartSniffingRequest>(
             SelectDeviceModalComponent
           )
           .afterClosed()
