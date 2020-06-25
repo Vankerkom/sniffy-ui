@@ -14,7 +14,7 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(SnifferActions.setActive, (state, { payload }) => ({
+  on(SnifferActions.loadStateSuccess, (state, { payload }) => ({
     ...state,
     active: payload.active,
   }))

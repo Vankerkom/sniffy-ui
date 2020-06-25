@@ -12,7 +12,7 @@ import * as SessionActions from '../store/actions/session.actions';
 import * as WebSocketActions from '../store/actions/web-socket.actions';
 
 const EVENT_TYPES_MAP = new Map<number, string>([
-  [EventId.SNIFFER_STATE_CHANGED, SnifferActions.setActive.type],
+  [EventId.SNIFFER_STATE_CHANGED, SnifferActions.loadStateSuccess.type],
   [EventId.SESSION_CREATE, SessionActions.sessionCreateSuccess.type],
   [EventId.SESSION_UPDATE, SessionActions.sessionUpdateSuccess.type],
   [EventId.SESSION_DELETE, SessionActions.sessionDeleteSuccess.type],
