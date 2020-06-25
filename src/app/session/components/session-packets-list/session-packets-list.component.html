@@ -1,1 +1,30 @@
-<p>session-packets-list works!</p>
+<mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="timestamp">
+    <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.timestamp}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="direction">
+    <mat-header-cell *matHeaderCellDef> Direction </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.direction}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="length">
+    <mat-header-cell *matHeaderCellDef> Length </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.length}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="opcode">
+    <mat-header-cell *matHeaderCellDef> Opcode </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.opcode}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['timestamp', 'direction', 'length', 'opcode', 'name']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['timestamp', 'direction', 'length', 'opcode', 'name']"></mat-row>
+</mat-table>

@@ -1,7 +1,8 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link *ngFor="let link of links"
-  [routerLink]="link.path"
-  routerLinkActive #rla="routerLinkActive"
-  [routerLinkActiveOptions]="{exact: true}"
-  [active]="rla.isActive"> {{link.label}} </a>
+  <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+    [routerLinkActiveOptions]="{exact: true}" [active]="rla.isActive">
+    <span matBadge="0" matBadgeOverlap="false" matBadgeSize="small">
+      {{link.label}}
+    </span>
+  </a>
 </nav>

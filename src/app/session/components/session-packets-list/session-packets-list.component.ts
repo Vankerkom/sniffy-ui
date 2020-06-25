@@ -7,6 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SessionPacketsListComponent implements OnInit {
 
+  dataSource = [
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+    { 'timestamp': '123', 'direction': 'Inbound', 'length': 99, 'opcode': 1024, 'name': '?' },
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
