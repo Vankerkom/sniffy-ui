@@ -9,14 +9,17 @@ import {
 import * as fromWebSocket from './web-socket.reducer';
 
 import { environment } from '@environments/environment';
+import * as fromSession from './session.reducer';
 
 
 export interface State {
-  webSocket: fromWebSocket.State,
+  [fromWebSocket.webSocketFeatureKey]: fromWebSocket.State,
+  [fromSession.sessionFeatureKey]: fromSession.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  webSocket: fromWebSocket.reducer,
+  [fromWebSocket.webSocketFeatureKey]: fromWebSocket.reducer,
+  [fromSession.sessionFeatureKey]: fromSession.reducer,
 };
 
 

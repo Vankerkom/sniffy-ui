@@ -7,6 +7,8 @@ import { reducers, metaReducers } from './store/reducers';
 import { environment } from '@environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { WebSocketEffects } from './store/effects/web-socket.effects';
+import * as fromSession from './store/reducers/session.reducer';
+import { SessionEffects } from './store/effects/session.effects';
 
 @NgModule({
   declarations: [],
@@ -20,7 +22,7 @@ import { WebSocketEffects } from './store/effects/web-socket.effects';
       },
     }),
     !environment.production ? StoreDevtoolsModule.instrument({ }) : [],
-    EffectsModule.forRoot([WebSocketEffects]),
+    EffectsModule.forRoot([WebSocketEffects, SessionEffects]),
   ],
 })
 export class CoreModule {
