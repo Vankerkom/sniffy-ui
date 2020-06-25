@@ -5,6 +5,9 @@ export const selectDeviceState = createFeatureSelector<fromDevice.State>(
   fromDevice.deviceFeatureKey
 );
 
-export const { selectAll } = fromDevice.adapter.getSelectors(
-  selectDeviceState
+export const selectLoaded = createSelector(
+  selectDeviceState,
+  (state) => state.loaded
 );
+
+export const { selectAll } = fromDevice.adapter.getSelectors(selectDeviceState);

@@ -1,0 +1,18 @@
+<form>
+  <h2 mat-dialog-title>Select Device And Protcol</h2>
+  <mat-dialog-content class="mat-typography">
+
+    <p>Please select a device and protocol to start sniffing.</p>
+
+    <p *ngIf="loaded$ | async; else loading" >{{ devices$ | async | json }}</p>
+
+    <ng-template #loading>
+      <p>Loading... please wait...</p>
+    </ng-template>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Start</button>
+  </mat-dialog-actions>
+</form>

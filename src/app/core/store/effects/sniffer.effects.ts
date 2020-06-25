@@ -16,6 +16,7 @@ import * as SnifferActions from '../actions/sniffer.actions';
 import * as WebSocketActions from '../actions/web-socket.actions';
 import { SnifferService } from '@app/core/services/sniffer.service';
 import { select, Store } from '@ngrx/store';
+import { DeviceActions, DeviceModalActions } from '@app/session/store/actions';
 
 @Injectable()
 export class SnifferEffects {
@@ -41,7 +42,7 @@ export class SnifferEffects {
   );
 
   startSniffing$ = createEffect(() => this.actions$.pipe(
-    ofType(SnifferActions.start),
+    ofType(DeviceModalActions.selectDeviceConfirmed),
     exhaustMap(() => this.snifferService.start().pipe(
       map(payload => SnifferActions.loadStateSuccess({ payload })),
       catchError(error => of(SnifferActions.startFailure({ error }))),

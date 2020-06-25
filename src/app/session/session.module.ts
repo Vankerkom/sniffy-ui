@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromDevice from './store/reducers/device.reducer';
 import { DeviceEffects } from './store/effects/device.effects';
+import { SelectDeviceModalComponent } from './containers/select-device-modal/select-device-modal.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { DeviceEffects } from './store/effects/device.effects';
     SessionPacketsListComponent,
     SessionPageComponent,
     ActionBarComponent,
+    SelectDeviceModalComponent,
   ],
   imports: [
     CommonModule,
