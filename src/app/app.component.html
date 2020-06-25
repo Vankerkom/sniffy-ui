@@ -1,1 +1,9 @@
+<p *ngIf="connected$ | async; else disconnected">
+  Connected!
+</p>
+
+<ng-template #disconnected>
+  Disconnected!
+</ng-template>
+
 <router-outlet></router-outlet>
