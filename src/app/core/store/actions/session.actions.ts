@@ -10,17 +10,17 @@ export const loadSessionsSuccess = createAction(
 props<{ payload: Array<Session> }>()
 );
 
-export const createSessionSuccess = createAction(
+export const sessionCreateSuccess = createAction(
   '[Session] Create Session Success',
 props<{ payload: Session }>()
 );
 
-export const updateSessionSuccess = createAction(
+export const sessionUpdateSuccess = createAction(
   '[Session] Update Session Success',
 props<{ payload: Session }>()
 );
 
-export const deleteSessionSuccess = createAction(
+export const sessionDeleteSuccess = createAction(
   '[Session] Delete Session Success',
 props<{ sessionId: number }>()
 );

@@ -7,13 +7,15 @@ import { Action } from '@ngrx/store';
 import { EventContainer } from '../models';
 import { EventId } from '../models/event-id';
 
+import * as SnifferActions from '../store/actions/sniffer.actions';
 import * as SessionActions from '../store/actions/session.actions';
 import * as WebSocketActions from '../store/actions/web-socket.actions';
 
 const EVENT_TYPES_MAP = new Map<number, string>([
-  [EventId.SESSION_CREATE, SessionActions.createSessionSuccess.type],
-  [EventId.SESSION_UPDATE, SessionActions.createSessionSuccess.type],
-  [EventId.SESSION_DELETE, SessionActions.createSessionSuccess.type],
+  [EventId.SNIFFER_STATE_CHANGED, SnifferActions.setActive.type],
+  [EventId.SESSION_CREATE, SessionActions.sessionCreateSuccess.type],
+  [EventId.SESSION_UPDATE, SessionActions.sessionUpdateSuccess.type],
+  [EventId.SESSION_DELETE, SessionActions.sessionDeleteSuccess.type],
 ]);
 
 @Injectable({

@@ -2,13 +2,13 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
-import { reducers, metaReducers } from './store/reducers';
-import { environment } from '@environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+
+import { environment } from '@environments/environment';
+import { reducers, metaReducers } from './store/reducers';
 import { WebSocketEffects } from './store/effects/web-socket.effects';
-import * as fromSession from './store/reducers/session.reducer';
 import { SessionEffects } from './store/effects/session.effects';
+import { SnifferEffects } from './store/effects/sniffer.effects';
 
 @NgModule({
   declarations: [],
@@ -22,7 +22,7 @@ import { SessionEffects } from './store/effects/session.effects';
       },
     }),
     !environment.production ? StoreDevtoolsModule.instrument({ }) : [],
-    EffectsModule.forRoot([WebSocketEffects, SessionEffects]),
+    EffectsModule.forRoot([WebSocketEffects, SessionEffects, SnifferEffects]),
   ],
 })
 export class CoreModule {
