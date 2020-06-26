@@ -6,9 +6,12 @@ import {
 } from '@angular/material/dialog';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Device } from '@app/session/models';
-import { DevicesSelectors } from '@app/session/store/selectors';
-import { DeviceActions } from '@app/session/store/actions';
+import { Device, Protocol } from '@app/session/models';
+import {
+  DevicesSelectors,
+  ProtocolsSelectors,
+} from '@app/session/store/selectors';
+import { DeviceActions, ProtocolActions } from '@app/session/store/actions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StartSniffingRequest } from '@app/core/models';
 
@@ -18,8 +21,11 @@ import { StartSniffingRequest } from '@app/core/models';
   styleUrls: ['./select-device-modal.component.scss'],
 })
 export class SelectDeviceModalComponent implements OnInit {
-  loaded$: Observable<boolean>;
+  loadedDevices$: Observable<boolean>;
+  loadedProtocols$: Observable<boolean>;
+
   devices$: Observable<Array<Device>>;
+  protocols$: Observable<Array<Protocol>>;
 
   selectDeviceForm: FormGroup;
 
@@ -31,24 +37,37 @@ export class SelectDeviceModalComponent implements OnInit {
   ) {
     this.selectDeviceForm = this.fb.group({
       device: this.fb.control(null, [Validators.required]),
+      protocol: this.fb.control(null, [Validators.required]),
     });
   }
 
-  displayFn(device: Device): string {
+  displayFnDevices(device: Device): string {
     return (device && device.name) || '';
+  }
+
+  displayFnProtocols(protocol: Protocol): string {
+    return (protocol && protocol.name) || '';
   }
 
   ngOnInit(): void {
     this.store.dispatch(DeviceActions.loadDevices());
-    this.loaded$ = this.store.pipe(select(DevicesSelectors.selectLoaded));
+    this.store.dispatch(ProtocolActions.loadProtocols());
+
+    this.loadedDevices$ = this.store.pipe(
+      select(DevicesSelectors.selectLoaded)
+    );
+    this.loadedProtocols$ = this.store.pipe(
+      select(ProtocolsSelectors.selectLoaded)
+    );
     this.devices$ = this.store.pipe(select(DevicesSelectors.selectAll));
+    this.protocols$ = this.store.pipe(select(ProtocolsSelectors.selectAll));
   }
 
   onSubmit(): void {
     if (this.selectDeviceForm.valid) {
       this.dialogRef.close({
         interfaceName: this.selectDeviceForm.value.device.name,
-        protocolId: 0, // TODO
+        protocolId: this.selectDeviceForm.value.protocol.id,
       } as StartSniffingRequest);
     }
   }

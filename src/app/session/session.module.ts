@@ -17,6 +17,8 @@ import * as fromDevice from './store/reducers/device.reducer';
 import { DeviceEffects } from './store/effects/device.effects';
 import { SelectDeviceModalComponent } from './containers/select-device-modal/select-device-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import * as fromProtocol from './store/reducers/protocol.reducer';
+import { ProtocolEffects } from './store/effects/protocol.effects';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SessionRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    EffectsModule.forFeature([DeviceEffects]),
+    EffectsModule.forFeature([DeviceEffects, ProtocolEffects]),
     StoreModule.forFeature(fromDevice.deviceFeatureKey, fromDevice.reducer),
+    StoreModule.forFeature(fromProtocol.protocolFeatureKey, fromProtocol.reducer),
   ],
   providers: [LoadSessionsGuard, LoadSessionGuard],
 })

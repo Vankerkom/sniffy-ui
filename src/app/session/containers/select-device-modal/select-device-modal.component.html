@@ -4,12 +4,23 @@
 
     <p>Please select a device and protocol to start sniffing.</p>
 
-    <ng-container *ngIf="loaded$ | async; else loading">
-      <mat-form-field class="example-full-width">
+    <ng-container *ngIf="loadedDevices$ | async; else loading">
+      <mat-form-field>
         <input type="text" placeholder="Select a network device" matInput formControlName="device"
           [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnDevices">
           <mat-option *ngFor="let option of devices$ | async" [value]="option">
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="loadedProtocols$ | async; else loading">
+      <mat-form-field>
+        <input type="text" placeholder="Select a protocol" matInput formControlName="protocol" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnProtocols">
+          <mat-option *ngFor="let option of protocols$ | async" [value]="option">
             {{ option.name }}
           </mat-option>
         </mat-autocomplete>
