@@ -30,7 +30,7 @@ export const reducer = createReducer(
     ...adapter.addMany(channels, state),
     loaded: true,
   })),
-  on(SessionActions.loadSession, (state, { payload }) =>
+  on(SessionActions.loadSession, SessionActions.sessionCreateSuccess, (state, { payload }) =>
     adapter.upsertOne(payload, state)
   ),
   on(SessionActions.loadSessionsFailure, (state, _) => ({
