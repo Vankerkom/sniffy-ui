@@ -32,3 +32,8 @@ export const loadSessionsFailure = createAction(
   '[Session] Load Sessions Failure',
   props<{ error: any }>()
 );
+
+export const selectSessionId = createAction(
+  '[Session] Select Session Id',
+  props<{ selectedSessionId: number | null }>()
+);

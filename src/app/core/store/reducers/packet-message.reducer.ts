@@ -6,15 +6,11 @@ import { MessagePacket } from '@app/core/models';
 
 export const packetMessageFeatureKey = 'messagePacket';
 
-export function sortByDate(a: MessagePacket, b: MessagePacket): number {
-  return a.timestamp.getTime() - b.timestamp.getTime();
-}
-
 export const adapter: EntityAdapter<MessagePacket> = createEntityAdapter<
   MessagePacket
 >({
   selectId: (messagePacket) => messagePacket.id,
-  sortComparer: sortByDate,
+  sortComparer: false,
 });
 
 export interface State extends EntityState<MessagePacket> {
@@ -36,5 +32,8 @@ export const reducer = createReducer(
       loadedSessions: [...state.loadedSessions, sessionId],
     })
   ),
-  on(PacketMessageActions.loadPacketMessagesFailure, (state, action) => state)
+  on(PacketMessageActions.loadPacketMessagesFailure, (state, action) => state),
+  on(PacketMessageActions.messagePacketReceived, (state, { payload }) =>
+    adapter.upsertOne(payload, state)
+  )
 );

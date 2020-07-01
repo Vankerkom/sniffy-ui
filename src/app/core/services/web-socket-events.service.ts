@@ -1,28 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { webSocket, WebSocketSubject } from "rxjs/webSocket";
+import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { environment } from '@environments/environment';
 import { Action } from '@ngrx/store';
 
 import { EventContainer } from '../models';
 import { EventId } from '../models/event-id';
 
-import * as SnifferActions from '../store/actions/sniffer.actions';
-import * as SessionActions from '../store/actions/session.actions';
-import * as WebSocketActions from '../store/actions/web-socket.actions';
+import {
+  PacketMessageActions,
+  SessionActions,
+  SnifferActions,
+  WebSocketActions,
+} from '../store/actions';
 
 const EVENT_TYPES_MAP = new Map<number, string>([
   [EventId.SNIFFER_STATE_CHANGED, SnifferActions.loadStateSuccess.type],
   [EventId.SESSION_CREATE, SessionActions.sessionCreateSuccess.type],
   [EventId.SESSION_UPDATE, SessionActions.sessionUpdateSuccess.type],
   [EventId.SESSION_DELETE, SessionActions.sessionDeleteSuccess.type],
+  [EventId.MESSAGE_PACKET_RECEIVED, PacketMessageActions.messagePacketReceived.type],
 ]);
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WebSocketEventsService {
-
   private socket: WebSocketSubject<EventContainer>;
 
   readonly opened$ = new Subject<Event>();
@@ -54,7 +57,9 @@ export class WebSocketEventsService {
       return { type, payload: container.d } as Action;
     }
 
-    return WebSocketActions.unknownMessageReceived({ id: container.i, payload: container.d });
+    return WebSocketActions.unknownMessageReceived({
+      id: container.i,
+      payload: container.d,
+    });
   }
-
 }

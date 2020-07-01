@@ -11,6 +11,12 @@ export const loadPacketMessagesSuccess = createAction(
   props<{ sessionId: number; payload: Array<MessagePacket> }>()
 );
 
+export const messagePacketReceived = createAction(
+  '[Packet Message] Message Packet Received',
+  props<{ payload: MessagePacket }>()
+);
+
+
 export const loadPacketMessagesFailure = createAction(
   '[Packet Message] Load Packet Messages Failure',
   props<{ sessionId: number; error: any }>()
