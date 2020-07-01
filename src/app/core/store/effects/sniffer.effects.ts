@@ -44,7 +44,7 @@ export class SnifferEffects {
   startSniffing$ = createEffect(() => this.actions$.pipe(
     ofType(DeviceModalActions.selectDeviceConfirmed),
     exhaustMap(action => this.snifferService.start(action.payload).pipe(
-      map(payload => SnifferActions.loadStateSuccess({ payload })),
+      map(payload => SnifferActions.loadStateSuccess({ payload: { active: true } })),
       catchError(error => of(SnifferActions.startFailure({ error }))),
     )),
   ));
