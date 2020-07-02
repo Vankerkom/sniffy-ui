@@ -13,14 +13,13 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HexBoxComponent {
-  _data: ArrayBuffer;
-  _byteArray: Uint8Array;
+  _byteArray: Uint8Array = new Uint8Array(128);
   _offsets: Array<any>;
 
-  @Input() set data(data: ArrayBuffer) {
-    this._data = data;
-    this._byteArray = new Uint8Array(this._data);
-    this._offsets = Array.from(Array(this._byteArray.length / 16 + 1).keys());
+  @Input() set data(data: Array<number>) {
+    this._byteArray = new Uint8Array(data);
+    const offsetArrayLength = Math.floor(this._byteArray.length / 16) + 1;
+    this._offsets = Array.from(Array(offsetArrayLength).keys());
     this._offsets = this._offsets.map((_, index) => index * 16);
   }
 
@@ -32,10 +31,6 @@ export class HexBoxComponent {
   selectionStart = -1;
   selectionEnd = -1;
   selecting = false;
-
-  constructor() {
-    this.data = new ArrayBuffer(1024);
-  }
 
   trackByFn(index, item) {
     return index;
@@ -69,5 +64,4 @@ export class HexBoxComponent {
     this.selectionStart = -1;
     this.selectionEnd = -1;
   }
-
 }

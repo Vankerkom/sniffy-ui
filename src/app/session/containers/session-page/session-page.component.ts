@@ -4,7 +4,6 @@ import { Store, select } from '@ngrx/store';
 
 import { MessagePacket } from '@app/core/models';
 import { PacketMessageSelectors } from '@app/core/store/selectors';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-session-page',
@@ -19,7 +18,6 @@ export class SessionPageComponent implements OnInit {
   ngOnInit(): void {
     this.messagePackets$ = this.store.pipe(
       select(PacketMessageSelectors.selectAllForActiveSession),
-      tap((x) => console.log(x))
     );
   }
 }
