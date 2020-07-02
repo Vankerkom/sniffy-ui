@@ -1,0 +1,23 @@
+<p>cursorIndex {{ cursorIndex }}</p>
+
+<div class="view">
+
+  <div class="offset">
+    <span (click)="setCursorIndex(offset)" class="selected" *ngFor="let offset of _offsets; let offsetIndex = index">
+      {{ offset | hex:6 }}
+    </span>
+  </div>
+
+  <div class="hex data">
+    <span (click)="setCursorIndex(hexOffset)" class="selected" *ngFor="let byte of _byteArray; let hexOffset = index">
+      {{ byte | hex }}
+    </span>
+  </div>
+
+  <div class="text data">
+    <span (click)="setCursorIndex(textOffset)" class="selected" *ngFor="let byte of _byteArray; let textOffset = index">
+      {{ byte | char }}
+    </span>
+  </div>
+
+</div>

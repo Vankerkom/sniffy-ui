@@ -1,0 +1,31 @@
+.view {
+  margin: 1em;
+  font-family: monospace;
+  font-size: 1.5em;
+  display: flex;
+
+  .offset {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+    align-items: flex-start;
+  }
+
+  .hex > span {
+    padding: 0 0.15em;
+  }
+
+  .data {
+    display: grid;
+    grid-template-columns: repeat(16, 0fr);
+    align-items: start;
+  }
+
+  .text {
+    margin-left: 1em;
+  }
+
+  .selected {
+    background-color: #ff0;
+  }
+}

@@ -6,8 +6,10 @@ import { SessionsPageComponent } from './containers/sessions-page/sessions-page.
 import { SessionPageComponent } from './containers/session-page/session-page.component';
 import { LoadSessionsGuard } from './guards/load-sessions.guard';
 import { LoadSessionGuard } from './guards/load-session.guard';
+import { HexboxDebugPageComponent } from './containers/hexbox-debug-page/hexbox-debug-page.component';
 
 const routes: Routes = [
+  { path: 'hex-box', component: HexboxDebugPageComponent },
   {
     path: '',
     component: SessionShellComponent,

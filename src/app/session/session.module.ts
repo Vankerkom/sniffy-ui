@@ -19,6 +19,10 @@ import { SelectDeviceModalComponent } from './containers/select-device-modal/sel
 import { ReactiveFormsModule } from '@angular/forms';
 import * as fromProtocol from './store/reducers/protocol.reducer';
 import { ProtocolEffects } from './store/effects/protocol.effects';
+import { HexboxDebugPageComponent } from './containers/hexbox-debug-page/hexbox-debug-page.component';
+import { HexBoxComponent } from './components/hex-box/hex-box.component';
+import { HexPipe } from './pipes/hex.pipe';
+import { CharPipe } from './pipes/char.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { ProtocolEffects } from './store/effects/protocol.effects';
     SessionPageComponent,
     ActionBarComponent,
     SelectDeviceModalComponent,
+    HexBoxComponent,
+    HexboxDebugPageComponent,
+    HexPipe,
+    CharPipe,
   ],
   imports: [
     CommonModule,
