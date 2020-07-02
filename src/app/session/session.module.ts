@@ -23,6 +23,7 @@ import { HexboxDebugPageComponent } from './containers/hexbox-debug-page/hexbox-
 import { HexBoxComponent } from './components/hex-box/hex-box.component';
 import { HexPipe } from './pipes/hex.pipe';
 import { CharPipe } from './pipes/char.pipe';
+import { SelectionRangePipe } from './pipes/selection-range.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CharPipe } from './pipes/char.pipe';
     HexboxDebugPageComponent,
     HexPipe,
     CharPipe,
+    SelectionRangePipe,
   ],
   imports: [
     CommonModule,

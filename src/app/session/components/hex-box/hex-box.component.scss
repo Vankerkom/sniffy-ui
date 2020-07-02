@@ -1,8 +1,10 @@
 .view {
+
+  display: flex;
   margin: 1em;
   font-family: monospace;
   font-size: 1.5em;
-  display: flex;
+  user-select: none;
 
   .offset {
     display: flex;
@@ -25,7 +27,12 @@
     margin-left: 1em;
   }
 
+  .hover {
+    background-color: #f0f;
+  }
+
   .selected {
     background-color: #ff0;
   }
+
 }

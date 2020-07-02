@@ -1,15 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { select } from '@ngrx/store';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-hex-box',
   templateUrl: './hex-box.component.html',
   styleUrls: ['./hex-box.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HexBoxComponent implements OnInit {
-
-  // TODO Add trackBy to improve change detection.
-
+export class HexBoxComponent {
   _data: ArrayBuffer;
   _byteArray: Uint8Array;
   _offsets: Array<any>;
@@ -23,17 +26,48 @@ export class HexBoxComponent implements OnInit {
 
   @Output() selectionChanged = new EventEmitter<Array<any>>();
 
-  cursorIndex = 0;
+  hoverIndex = -1;
+  cursorIndex = -1;
+
+  selectionStart = -1;
+  selectionEnd = -1;
+  selecting = false;
 
   constructor() {
     this.data = new ArrayBuffer(1024);
   }
 
-  ngOnInit(): void {}
+  trackByFn(index, item) {
+    return index;
+  }
 
   setCursorIndex(newCursorIndex: number): void {
     this.cursorIndex = newCursorIndex;
-    console.log('cursorIndex', this.cursorIndex);
+    this.hoverIndex = newCursorIndex;
+  }
+
+  setHoverIndex(newHoverIndex: number): void {
+    this.hoverIndex = newHoverIndex;
+
+    if (this.selecting) {
+      this.selectionEnd = this.hoverIndex;
+    }
+  }
+
+  setSelectionStart(newSelectionStart: number): void {
+    this.selectionStart = newSelectionStart;
+    this.selecting = true;
+  }
+
+  setSelectionEnd(newSelectionEnd: number): void {
+    this.selectionEnd = newSelectionEnd;
+    this.selecting = false;
+  }
+
+  resetCursor() {
+    this.setCursorIndex(-1);
+    this.selectionStart = -1;
+    this.selectionEnd = -1;
   }
 
 }
