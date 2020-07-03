@@ -24,6 +24,7 @@ import { HexBoxComponent } from './components/hex-box/hex-box.component';
 import { HexPipe } from './pipes/hex.pipe';
 import { CharPipe } from './pipes/char.pipe';
 import { SelectionRangePipe } from './pipes/selection-range.pipe';
+import { DataInspectorComponent } from './components/data-inspector/data-inspector.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SelectionRangePipe } from './pipes/selection-range.pipe';
     HexPipe,
     CharPipe,
     SelectionRangePipe,
+    DataInspectorComponent,
   ],
   imports: [
     CommonModule,

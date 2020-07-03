@@ -1,0 +1,18 @@
+.table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  font-size: 0.8rem;
+
+  .header {
+    font-weight: bold;
+  }
+
+  .wide {
+    grid-column: 2 / span 2;
+  }
+
+  .mat-form-field {
+    margin-bottom: -1.25em !important;
+  }
+}
