@@ -1,9 +1,31 @@
 :host {
   display: flex;
+  height: 100%;
+  flex: 1;
 }
 
-.row {
-  flex-grow: 1;
+.left {
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+app-session-packets-list {
+  height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1;
+  scrollbar-width: thin;
+}
+
+app-hex-box {
+  min-height: 100px;
+}
+
+.right {
+  min-width: 300px;
+}
+
+.data {
+  flex-grow: 1;
 }

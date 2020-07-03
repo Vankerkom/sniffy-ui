@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const COMPONENTS = [
   MatAutocompleteModule,
@@ -26,6 +27,7 @@ const COMPONENTS = [
   MatProgressSpinnerModule,
   MatInputModule,
   MatSelectModule,
+  MatExpansionModule,
 ];
 
 @NgModule({

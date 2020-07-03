@@ -1,11 +1,39 @@
-<div class="row">
+<div class="left">
   <app-session-packets-list [dataSource]="messagePackets$ | async"></app-session-packets-list>
   <app-hex-box [data]="[0,0,0,0,0]"></app-hex-box>
 </div>
 
-<div class="row">
-  <p>Search</p>
-  <p>Structure</p>
-  <p>Date Inspector</p>
-</div>
 
+<div class="right">
+  <mat-accordion displayMode="flat" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Search
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Search</p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Structure
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Structure</p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Data Inspector
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <p>Data Inspector</p>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</div>

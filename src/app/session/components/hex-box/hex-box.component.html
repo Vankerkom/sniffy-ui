@@ -1,25 +1,25 @@
-<div class="view">
+<div class="offset">
+  <span (click)="setCursorIndex(offset)" (dblclick)="resetCursor()" *ngFor="let offset of _offsets;">
+    {{ offset | hex:6 }}
+  </span>
+</div>
 
-  <div class="offset">
-    <span (click)="setCursorIndex(offset)" (dblclick)="resetCursor()" *ngFor="let offset of _offsets;">
-      {{ offset | hex:6 }}
-    </span>
-  </div>
+<div class="hex data">
+  <span [class.hover]="hoverIndex === hexOffset" [class.selected]="cursorIndex === hexOffset"
+    [class.selected]="hexOffset | selectionRange: selectionStart:selectionEnd" (click)="setCursorIndex(hexOffset)"
+    (mouseover)="setHoverIndex(hexOffset)" (mousedown)="setSelectionStart(hexOffset)"
+    (mouseup)="setSelectionEnd(hexOffset)" (dblclick)="resetCursor()"
+    *ngFor="let byte of _byteArray;trackBy: trackByFn let hexOffset = index">
+    {{ byte | hex }}
+  </span>
+</div>
 
-  <div class="hex data">
-    <span [class.hover]="hoverIndex === hexOffset" [class.selected]="cursorIndex === hexOffset" [class.selected]="hexOffset | selectionRange: selectionStart:selectionEnd"
-      (click)="setCursorIndex(hexOffset)" (mouseover)="setHoverIndex(hexOffset)" (mousedown)="setSelectionStart(hexOffset)" (mouseup)="setSelectionEnd(hexOffset)" (dblclick)="resetCursor()"
-      *ngFor="let byte of _byteArray;trackBy: trackByFn let hexOffset = index">
-      {{ byte | hex }}
-    </span>
-  </div>
-
-  <div class="text data">
-    <span [class.hover]="hoverIndex === textOffset" [class.selected]="cursorIndex === textOffset" [class.selected]="textOffset | selectionRange: selectionStart:selectionEnd"
-      (click)="setCursorIndex(textOffset)" (mouseover)="setHoverIndex(textOffset)" (mousedown)="setSelectionStart(textOffset)" (mouseup)="setSelectionEnd(textOffset)" (dblclick)="resetCursor()"
-      *ngFor="let byte of _byteArray;trackBy: trackByFn let textOffset = index" >
-      {{ byte | char }}
-    </span>
-  </div>
-
+<div class="text data">
+  <span [class.hover]="hoverIndex === textOffset" [class.selected]="cursorIndex === textOffset"
+    [class.selected]="textOffset | selectionRange: selectionStart:selectionEnd" (click)="setCursorIndex(textOffset)"
+    (mouseover)="setHoverIndex(textOffset)" (mousedown)="setSelectionStart(textOffset)"
+    (mouseup)="setSelectionEnd(textOffset)" (dblclick)="resetCursor()"
+    *ngFor="let byte of _byteArray;trackBy: trackByFn let textOffset = index">
+    {{ byte | char }}
+  </span>
 </div>
