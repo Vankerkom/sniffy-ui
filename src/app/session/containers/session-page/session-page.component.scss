@@ -12,7 +12,7 @@
 
 app-session-packets-list {
   height: 0;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   flex-grow: 1;
   scrollbar-width: thin;
@@ -20,10 +20,23 @@ app-session-packets-list {
 
 app-hex-box {
   min-height: 100px;
+  border-top: 1px solid rgba(0,0,0,.12);
+  overflow-y: scroll;
+  scrollbar-width: thin;
 }
 
 .right {
+  display: flex;
+  flex-direction: column;
   min-width: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+
+  .column {
+    height: 0;
+    flex-grow: 1;
+  }
 }
 
 .data {
