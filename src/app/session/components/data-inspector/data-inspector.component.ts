@@ -27,7 +27,6 @@ export class DataInspectorComponent implements OnInit {
 
   @Input() littleEndian = true;
 
-
   @Input() set buffer(buffer: any) {
     const dataView = new DataView(buffer || new ArrayBuffer(0));
 

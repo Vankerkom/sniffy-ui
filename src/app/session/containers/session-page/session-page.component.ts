@@ -11,6 +11,7 @@ import { PacketMessageSelectors } from '@app/core/store/selectors';
   styleUrls: ['./session-page.component.scss'],
 })
 export class SessionPageComponent implements OnInit {
+  selectedBuffer: ArrayBuffer | null = null;
   messagePackets$: Observable<Array<MessagePacket>>;
 
   constructor(private readonly store: Store<any>) {}
@@ -19,5 +20,9 @@ export class SessionPageComponent implements OnInit {
     this.messagePackets$ = this.store.pipe(
       select(PacketMessageSelectors.selectAllForActiveSession),
     );
+  }
+
+  changeHexSelection(event: ArrayBuffer | null): void {
+    this.selectedBuffer = event;
   }
 }
