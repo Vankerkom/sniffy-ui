@@ -4,13 +4,13 @@
   font-family: monospace;
   font-size: 1.2em;
   user-select: none;
+  align-items: flex-start;
 }
 
 .offset {
   display: flex;
   flex-direction: column;
   margin-right: 1em;
-  align-items: flex-start;
 }
 
 .hex > span {

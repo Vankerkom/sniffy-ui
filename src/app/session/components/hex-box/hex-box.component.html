@@ -5,8 +5,8 @@
 </div>
 
 <div class="hex data">
-  <span [class.hover]="hoverIndex === hexOffset" [class.selected]="cursorIndex === hexOffset"
-    [class.selected]="hexOffset | selectionRange: selectionStart:selectionEnd" (click)="setCursorIndex(hexOffset)"
+  <span [class.hover]="hoverIndex === hexOffset"
+    [class.selected]="hexOffset | selectionRange: selectionStart:selectionEnd"
     (mouseover)="setHoverIndex(hexOffset)" (mousedown)="setSelectionStart(hexOffset)"
     (mouseup)="setSelectionEnd(hexOffset)" (dblclick)="resetCursor()"
     *ngFor="let byte of _byteArray;trackBy: trackByFn let hexOffset = index">
@@ -15,8 +15,8 @@
 </div>
 
 <div class="text data">
-  <span [class.hover]="hoverIndex === textOffset" [class.selected]="cursorIndex === textOffset"
-    [class.selected]="textOffset | selectionRange: selectionStart:selectionEnd" (click)="setCursorIndex(textOffset)"
+  <span [class.hover]="hoverIndex === textOffset"
+    [class.selected]="textOffset | selectionRange: selectionStart:selectionEnd"
     (mouseover)="setHoverIndex(textOffset)" (mousedown)="setSelectionStart(textOffset)"
     (mouseup)="setSelectionEnd(textOffset)" (dblclick)="resetCursor()"
     *ngFor="let byte of _byteArray;trackBy: trackByFn let textOffset = index">

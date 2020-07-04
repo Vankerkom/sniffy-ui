@@ -23,11 +23,9 @@ export class HexBoxComponent {
     this._offsets = this._offsets.map((_, index) => index * 16);
   }
 
-  @Output() selectionChanged = new EventEmitter<Array<any>>();
+  @Output() selectionChanged = new EventEmitter<ArrayBuffer | null>();
 
   hoverIndex = -1;
-  cursorIndex = -1;
-
   selectionStart = -1;
   selectionEnd = -1;
   selecting = false;
@@ -37,8 +35,9 @@ export class HexBoxComponent {
   }
 
   setCursorIndex(newCursorIndex: number): void {
-    this.cursorIndex = newCursorIndex;
     this.hoverIndex = newCursorIndex;
+    this.selectionStart = this.selectionEnd = newCursorIndex;
+    this.changeSelection();
   }
 
   setHoverIndex(newHoverIndex: number): void {
@@ -46,6 +45,7 @@ export class HexBoxComponent {
 
     if (this.selecting) {
       this.selectionEnd = this.hoverIndex;
+      this.changeSelection();
     }
   }
 
@@ -57,11 +57,27 @@ export class HexBoxComponent {
   setSelectionEnd(newSelectionEnd: number): void {
     this.selectionEnd = newSelectionEnd;
     this.selecting = false;
+    this.changeSelection();
   }
 
   resetCursor() {
     this.setCursorIndex(-1);
     this.selectionStart = -1;
     this.selectionEnd = -1;
+    this.changeSelection();
+  }
+
+  private changeSelection(): void {
+    const startIndex = Math.min(this.selectionStart, this.selectionEnd);
+    const endIndex = Math.max(this.selectionStart, this.selectionEnd) + 1;
+    const selectedBuffer = this.getSelectedBufferForRange(startIndex, endIndex);
+
+    this.selectionChanged.emit(selectedBuffer);
+  }
+
+  private getSelectedBufferForRange(startIndex: number, endIndex: number): ArrayBuffer | null {
+    return startIndex >= 0 && endIndex >= 0
+      ? this._byteArray.buffer.slice(startIndex, endIndex)
+      : null;
   }
 }
