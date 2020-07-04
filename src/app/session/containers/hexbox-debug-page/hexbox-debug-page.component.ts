@@ -47,7 +47,6 @@ export class HexboxDebugPageComponent implements OnInit {
   ngOnInit(): void {}
 
   selectionChanged($event: any) {
-    console.log('Selection changed', $event ? new Uint8Array($event) : 'null');
     this.selectionData = $event;
   }
 }
