@@ -1,5 +1,5 @@
 <div class="panel">
   <app-hex-box (selectionChanged)="selectionChanged($event)"></app-hex-box>
-  <app-data-inspector></app-data-inspector>
+  <app-data-inspector (buffer)="selectionData" ></app-data-inspector>
 </div>
 

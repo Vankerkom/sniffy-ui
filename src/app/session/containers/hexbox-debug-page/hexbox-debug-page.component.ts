@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HexboxDebugPageComponent implements OnInit {
 
+  selectionData: any;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -14,6 +16,7 @@ export class HexboxDebugPageComponent implements OnInit {
 
   selectionChanged($event: any) {
     console.log('Selection changed', $event);
+    this.selectionData = $event;
   }
 
 }
