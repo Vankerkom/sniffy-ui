@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { environment } from '@environments/environment';
 import { reducers, metaReducers } from './store/reducers';
@@ -26,6 +27,7 @@ import { PacketMessageEffects } from './store/effects/packet-message.effects';
     !environment.production ? StoreDevtoolsModule.instrument({ }) : [],
     EffectsModule.forRoot([WebSocketEffects, SessionEffects, SnifferEffects]),
     StoreModule.forFeature(fromPacketMessage.packetMessageFeatureKey, fromPacketMessage.reducer),
+    StoreRouterConnectingModule.forRoot(),
     EffectsModule.forFeature([PacketMessageEffects]),
   ],
 })
