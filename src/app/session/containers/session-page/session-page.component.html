@@ -1,8 +1,9 @@
-<div class="left">
-  <app-session-packets-list [dataSource]="messagePackets$ | async"></app-session-packets-list>
-  <app-hex-box [data]="[0,0,0,0,0]" (selectionChanged)="changeHexSelection($event)"></app-hex-box>
-</div>
-
+<ng-container *ngIf="selectedSessionId$ | async as selectedSessionId">
+  <div class="left">
+    <app-session-packets-list [dataSource]="messagePackets$ | async" (selectMessage)="packetMessageSelected(selectedSessionId, $event)"></app-session-packets-list>
+    <app-hex-box [data]="selectedPayload$ | async" (selectionChanged)="changeHexSelection($event)"></app-hex-box>
+  </div>
+</ng-container>
 
 <div class="right">
   <div class="column">

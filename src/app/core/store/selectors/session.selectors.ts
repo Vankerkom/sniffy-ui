@@ -16,3 +16,15 @@ export const selectLoaded = createSelector(
   selectSessionState,
   (state) => state.loaded
 );
+
+export const selectSelectedSession = createSelector(
+  selectEntities,
+  selectSelectedSessionId,
+  (entities, selectedSessionId) =>
+    selectedSessionId && entities[selectedSessionId]
+);
+
+export const selectSelectedMessageId = createSelector(
+  selectSelectedSession,
+  (session) => session.selectedMessageId
+);

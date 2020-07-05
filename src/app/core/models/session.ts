@@ -3,4 +3,5 @@ export interface Session {
   name: string;
   protocolId: number;
   startAt: Date;
+  selectedMessageId?: string;
 }

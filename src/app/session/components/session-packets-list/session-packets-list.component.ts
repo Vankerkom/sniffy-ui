@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MessagePacket } from '@app/core/models';
 
 @Component({
   selector: 'app-session-packets-list',
   templateUrl: './session-packets-list.component.html',
-  styleUrls: ['./session-packets-list.component.scss']
+  styleUrls: ['./session-packets-list.component.scss'],
 })
-export class SessionPacketsListComponent implements OnInit {
-
+export class SessionPacketsListComponent {
   @Input() dataSource: Array<any> = [];
 
-  constructor() { }
+  @Output() selectMessage = new EventEmitter<string>();
 
-  ngOnInit(): void {
+  onRowClicked(messagePacket: MessagePacket): void {
+    this.selectMessage.emit(messagePacket.id);
   }
-
 }

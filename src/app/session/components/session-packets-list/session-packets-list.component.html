@@ -26,5 +26,5 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="['timestamp', 'direction']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['timestamp', 'direction']"></mat-row>
+  <mat-row *matRowDef="let row; columns: ['timestamp', 'direction']" (click)="onRowClicked(row)"></mat-row>
 </mat-table>

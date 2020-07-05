@@ -16,11 +16,12 @@ export class HexBoxComponent {
   _byteArray: Uint8Array = new Uint8Array(128);
   _offsets: Array<any>;
 
-  @Input() set data(data: Array<number>) {
+  @Input() set data(data: ArrayBuffer) {
     this._byteArray = new Uint8Array(data);
     const offsetArrayLength = Math.floor(this._byteArray.length / 16) + 1;
     this._offsets = Array.from(Array(offsetArrayLength).keys());
     this._offsets = this._offsets.map((_, index) => index * 16);
+    this.changeSelection();
   }
 
   @Output() selectionChanged = new EventEmitter<ArrayBuffer | null>();
