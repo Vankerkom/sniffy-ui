@@ -4,6 +4,8 @@ import { Store, select } from '@ngrx/store';
 
 import { MessagePacket } from '@app/core/models';
 import { PacketMessageSelectors } from '@app/core/store/selectors';
+import { selectRouteParams } from '@app/core/store/selectors/router.selectors';
+import { selectSelectedSessionId } from '@app/core/store/selectors/session.selectors';
 
 @Component({
   selector: 'app-session-page',
