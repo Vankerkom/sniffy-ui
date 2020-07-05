@@ -33,7 +33,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <app-data-inspector [buffer]="selectedBuffer"></app-data-inspector>
+        <app-data-inspector [buffer]="selectedBuffer" littleEndian="true"></app-data-inspector>
       </mat-expansion-panel>
 
       <mat-expansion-panel>
@@ -43,7 +43,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <app-data-inspector [buffer]="selectedBuffer" littleEndian="false"></app-data-inspector>
+        <app-data-inspector [buffer]="selectedBuffer"></app-data-inspector>
       </mat-expansion-panel>
 
     </mat-accordion>
