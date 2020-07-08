@@ -9,4 +9,8 @@ import { Session } from '@app/core/models';
 })
 export class SessionsSidebarSectionComponent {
   @Input() sessions: Array<Session>;
+
+  trackByFn(index: number, item: Session): string {
+    return item.id.toString(10);
+  }
 }
