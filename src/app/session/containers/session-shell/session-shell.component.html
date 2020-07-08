@@ -1,14 +1,9 @@
 <div class="sidebar">
   <h1>Sessions</h1>
-
   <app-sessions-sidebar-section [sessions]="sessions$ | async"></app-sessions-sidebar-section>
 </div>
 
 <div class="content">
   <app-action-bar [active]="snifferActive$ | async" (start)="start()" (stop)="stop()"></app-action-bar>
-
-  <app-session-tab-nav [sessions]="sessions$ | async"></app-session-tab-nav>
-
   <router-outlet></router-outlet>
-
 </div>
