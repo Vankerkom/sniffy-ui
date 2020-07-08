@@ -1,5 +1,18 @@
 :host {
+  flex: 1;
+  display: flex;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+}
+
+.sidebar h1 {
+  font-size: 1em;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 1em 1em 1.5em;
+  color: #c2c2c2;
 }

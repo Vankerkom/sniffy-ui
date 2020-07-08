@@ -1,10 +1,7 @@
 <div class="wrapper" *ngIf="connected$ | async; else disconnected">
   <div class="content">
     <app-icon-navigation></app-icon-navigation>
-
-    <div class="spacer">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 
   <app-status-strip></app-status-strip>

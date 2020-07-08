@@ -16,3 +16,12 @@ body {
 .spacer {
   flex: 1;
 }
+
+.sidebar {
+  background: #343a40;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  min-width: 250px;
+}
+
