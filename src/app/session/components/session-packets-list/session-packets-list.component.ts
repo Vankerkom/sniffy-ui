@@ -7,9 +7,13 @@ import { MessagePacket } from '@app/core/models';
   styleUrls: ['./session-packets-list.component.scss'],
 })
 export class SessionPacketsListComponent {
-  @Input() dataSource: Array<any> = [];
+  @Input() dataSource: Array<MessagePacket> = [];
 
   @Output() selectMessage = new EventEmitter<string>();
+
+  trackByFn(index: number, item: MessagePacket): string {
+    return item.id;
+  }
 
   onRowClicked(messagePacket: MessagePacket): void {
     this.selectMessage.emit(messagePacket.id);
