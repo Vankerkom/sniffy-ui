@@ -1,53 +1,30 @@
 <ng-container *ngIf="selectedSessionId$ | async as selectedSessionId">
   <div class="left">
-    <app-session-packets-list [dataSource]="messagePackets$ | async" (selectMessage)="packetMessageSelected(selectedSessionId, $event)"></app-session-packets-list>
-    <app-hex-box [data]="selectedPayload$ | async" (selectionChanged)="changeHexSelection($event)"></app-hex-box>
+
+    <div class="tabs">
+      <a class="tab" [routerLink]="['/sessions', selectedSessionId]" routerLinkActive="active">Packets</a>
+      <a class="tab" [routerLink]="['/sessions', selectedSessionId, '/messages']" routerLinkActive="active" >Messages</a>
+    </div>
+
+    <app-session-packets-list
+      [dataSource]="messagePackets$ | async"
+      (selectMessage)="packetMessageSelected(selectedSessionId, $event)"
+    ></app-session-packets-list>
+
+    <app-hex-box
+      [data]="selectedPayload$ | async"
+      (selectionChanged)="changeHexSelection($event)"
+    ></app-hex-box>
+
   </div>
 </ng-container>
 
-<div class="right">
-  <div class="column">
-    <mat-accordion multi>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Search
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Search</p>
-      </mat-expansion-panel>
+<div class="sidebar">
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Structure
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Structure</p>
-      </mat-expansion-panel>
+  <app-data-inspector
+    [buffer]="selectedBuffer"
+    littleEndian="true"
+  ></app-data-inspector>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Data Inspector (Little Endian)
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <app-data-inspector [buffer]="selectedBuffer" littleEndian="true"></app-data-inspector>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Data Inspector (Big Endian)
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <app-data-inspector [buffer]="selectedBuffer"></app-data-inspector>
-      </mat-expansion-panel>
-
-    </mat-accordion>
-
-  </div>
-
+  <app-data-inspector [buffer]="selectedBuffer"></app-data-inspector>
 </div>

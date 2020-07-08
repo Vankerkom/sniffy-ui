@@ -25,6 +25,8 @@ export class DataInspectorComponent implements OnInit {
   length: number = 0;
   binary: string | null = null;
 
+  title = '';
+
   @Input() littleEndian: boolean;
 
   @Input() set buffer(buffer: any) {
@@ -50,5 +52,8 @@ export class DataInspectorComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const endianess = !!this.littleEndian ? 'Little' : 'Big';
+    this.title = `Data Inspector (${endianess}-endian)`;
+  }
 }

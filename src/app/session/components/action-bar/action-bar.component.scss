@@ -1,3 +1,10 @@
-.spacer {
-  flex: 1 1 auto;
+:host {
+  ::ng-deep {
+    button {
+      height: 1.8rem !important;
+      width: 1.8rem !important;
+      font-size: 1.2rem !important;
+      line-height: 1.2rem !important;
+    }
+  }
 }

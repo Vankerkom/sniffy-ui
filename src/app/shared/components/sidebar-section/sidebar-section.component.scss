@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 1em;
+  margin-left: 0;
+  font-size: 1em;
+}
+
+.header {
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}

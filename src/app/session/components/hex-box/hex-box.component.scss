@@ -11,10 +11,19 @@
   display: flex;
   flex-direction: column;
   margin-right: 1em;
+  color: #aaa;
 }
 
-.hex > span {
-  padding: 0 0.15em;
+.hex  {
+
+  span {
+    padding: 0 0.2em;
+
+    &:nth-child(even) {
+      color: #aaa;
+    }
+  }
+
 }
 
 .data {
@@ -28,9 +37,9 @@
 }
 
 .hover {
-  background-color: #f0f;
+  background-color: #263859;
 }
 
 .selected {
-  background-color: #ff0;
+  background-color: #6b778d;
 }

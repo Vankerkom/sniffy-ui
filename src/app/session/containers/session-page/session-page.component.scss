@@ -1,7 +1,7 @@
 :host {
   display: flex;
-  height: 100%;
   flex: 1;
+  overflow: hidden;
 }
 
 .left {
@@ -12,33 +12,35 @@
 
 app-session-packets-list {
   height: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   flex-grow: 1;
   scrollbar-width: thin;
 }
 
 app-hex-box {
-  min-height: 100px;
-  border-top: 1px solid rgba(0,0,0,.12);
-  overflow-y: scroll;
-  scrollbar-width: thin;
-}
-
-.right {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+  min-height: 200px;
+  max-height: 200px;
   overflow-y: auto;
-  overflow-x: hidden;
   scrollbar-width: thin;
-
-  .column {
-    height: 0;
-    flex-grow: 1;
-  }
+  border-top: 1px solid #6c757d;
 }
 
-.data {
-  flex-grow: 1;
+.sidebar {
+  width: 340px;
+}
+
+.tabs {
+  display: flex;
+
+  .tab {
+    margin: 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+
+  .active {
+    color: #fff;
+  }
 }

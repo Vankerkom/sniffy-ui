@@ -1,8 +1,11 @@
-.table {
+.inspector {
+  font-size: 0.9em;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 30% 40% 40%;
   align-items: center;
-  font-size: 0.8rem;
+  margin: 1em;
+  grid-column-gap: 0.5em;
+  overflow: hidden;
 
   .header {
     font-weight: bold;

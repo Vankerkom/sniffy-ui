@@ -1,0 +1,14 @@
+<app-sidebar-section title="Sessions">
+  <div class="sessions">
+    <a
+      class="session"
+      *ngFor="let session of sessions;trackBy: trackByFn"
+      [routerLink]="['/sessions/', session.id]"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <span class="icon"><mat-icon inline>close</mat-icon></span>
+      <span class="description">{{ session.name }}</span>
+    </a>
+  </div>
+</app-sidebar-section>

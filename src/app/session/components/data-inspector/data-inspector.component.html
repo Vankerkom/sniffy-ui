@@ -1,72 +1,71 @@
-<div class="table">
+<app-sidebar-section [title]="title">
+  <div class="inspector">
+    <span class="header">Type</span>
+    <span class="header">Unsigned (+)</span>
+    <span class="header">Signed (±)</span>
 
-  <span class="header">Type</span>
-  <span class="header">Unsigned (+)</span>
-  <span class="header">Signed (±)</span>
+    <span>8-bit integer</span>
 
-  <span>8-bit integer</span>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="uint8Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="uint8Value" readonly>
-  </mat-form-field>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="int8Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="int8Value" readonly>
-  </mat-form-field>
+    <span>16-bit integer</span>
 
-  <span>16-bit integer</span>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="uint16Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="uint16Value" readonly>
-  </mat-form-field>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="int16Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="int16Value" readonly>
-  </mat-form-field>
+    <span>32-bit integer</span>
 
-  <span>32-bit integer</span>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="uint32Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="uint32Value" readonly>
-  </mat-form-field>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="int32Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="int32Value" readonly>
-  </mat-form-field>
+    <span>64-bit integer</span>
 
-  <span>64-bit integer</span>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="uint64Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="uint64Value" readonly>
-  </mat-form-field>
+    <mat-form-field appearance="standard">
+      <input matInput [value]="int64Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field appearance="standard">
-    <input matInput [value]="int64Value" readonly>
-  </mat-form-field>
+    <span>32-bit Float</span>
 
-  <span>32-bit Float</span>
+    <mat-form-field class="wide">
+      <input matInput [value]="float32Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field class="wide">
-    <input matInput [value]="float32Value" readonly>
-  </mat-form-field>
+    <span>64-bit Float</span>
 
-  <span>64-bit Float</span>
+    <mat-form-field class="wide">
+      <input matInput [value]="float64Value" readonly />
+    </mat-form-field>
 
-  <mat-form-field class="wide">
-    <input matInput [value]="float64Value" readonly>
-  </mat-form-field>
+    <span>Binary</span>
 
-  <span>Binary</span>
+    <mat-form-field class="wide">
+      <input matInput [value]="binary" readonly />
+    </mat-form-field>
 
-  <mat-form-field class="wide">
-    <input matInput [value]="binary" readonly>
-  </mat-form-field>
+    <span>Length</span>
 
-  <span>Length</span>
-
-  <mat-form-field class="wide">
-    <input matInput [value]="length" readonly>
-  </mat-form-field>
-
-
-</div>
+    <mat-form-field class="wide">
+      <input matInput [value]="length" readonly />
+    </mat-form-field>
+  </div>
+</app-sidebar-section>

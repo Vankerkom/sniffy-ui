@@ -8,10 +8,14 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { IconNavigationComponent } from './components/icon-navigation/icon-navigation.component';
+import { StatusStripComponent } from './components/status-strip/status-strip.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IconNavigationComponent,
+    StatusStripComponent
   ],
   imports: [
     BrowserModule,

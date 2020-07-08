@@ -1,5 +1,25 @@
 :host {
+  flex: 1;
+  display: flex;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 1em 1.5em;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+}
+
+.sidebar h1 {
+  font-size: 1em;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #c2c2c2;
+  margin: 0;
 }
