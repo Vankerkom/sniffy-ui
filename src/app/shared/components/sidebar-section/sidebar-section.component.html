@@ -1,5 +1,7 @@
-<h2 class="title">{{ title }}</h2>
-<span></span>
+<div class="header" (click)="toggle()">
+  <h2 class="title">{{ title }}</h2>
+  <mat-icon class="icon">{{ open ? "expand_less" : "expand_more" }}</mat-icon>
+</div>
 
 <div class="content" *ngIf="open">
   <ng-content></ng-content>

@@ -10,4 +10,8 @@ export class SidebarSectionComponent {
   @Input() title = 'Section';
   @Input() open = true;
 
+  toggle(): void {
+    this.open = !this.open;
+  }
+
 }
