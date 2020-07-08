@@ -1,13 +1,21 @@
 <ng-container *ngIf="selectedSessionId$ | async as selectedSessionId">
   <div class="left">
+
+    <div class="tabs">
+      <a class="tab" [routerLink]="['/sessions', selectedSessionId]" routerLinkActive="active">Packets</a>
+      <a class="tab" [routerLink]="['/sessions', selectedSessionId, '/messages']" routerLinkActive="active" >Messages</a>
+    </div>
+
     <app-session-packets-list
       [dataSource]="messagePackets$ | async"
       (selectMessage)="packetMessageSelected(selectedSessionId, $event)"
     ></app-session-packets-list>
+
     <app-hex-box
       [data]="selectedPayload$ | async"
       (selectionChanged)="changeHexSelection($event)"
     ></app-hex-box>
+
   </div>
 </ng-container>
 
