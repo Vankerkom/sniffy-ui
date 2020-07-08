@@ -2,7 +2,7 @@
   <div class="sessions">
     <a
       class="session"
-      *ngFor="let session of sessions;trackBy:  trackByFn"
+      *ngFor="let session of sessions;trackBy: trackByFn"
       [routerLink]="['/sessions/', session.id]"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
