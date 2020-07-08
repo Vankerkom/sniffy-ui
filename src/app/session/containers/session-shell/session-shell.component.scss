@@ -3,6 +3,13 @@
   display: flex;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 1em 1.5em;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -13,6 +20,6 @@
   font-size: 1em;
   font-weight: normal;
   text-transform: uppercase;
-  margin: 1em 1em 1.5em;
   color: #c2c2c2;
+  margin: 0;
 }

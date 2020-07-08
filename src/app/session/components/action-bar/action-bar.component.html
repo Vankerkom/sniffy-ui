@@ -1,25 +1,19 @@
-<mat-toolbar color="primary">
+<button mat-icon-button disabled>
+  <mat-icon inline>folder_open</mat-icon>
+</button>
 
-  <button mat-icon-button disabled>
-    <mat-icon>folder_open</mat-icon>
-  </button>
+<button mat-icon-button disabled>
+  <mat-icon inline>save</mat-icon>
+</button>
 
-  <button mat-icon-button disabled>
-    <mat-icon>save</mat-icon>
-  </button>
+<button mat-icon-button [disabled]="active" (click)="start.emit()">
+  <mat-icon inline>play_arrow</mat-icon>
+</button>
 
-  <button mat-icon-button [disabled]="active" (click)="start.emit()">
-    <mat-icon>play_arrow</mat-icon>
-  </button>
+<button mat-icon-button [disabled]="!active" (click)="stop.emit()">
+  <mat-icon inline>stop</mat-icon>
+</button>
 
-  <button mat-icon-button [disabled]="!active" (click)="stop.emit()">
-    <mat-icon>stop</mat-icon>
-  </button>
-
-  <button mat-icon-button disabled>
-    <mat-icon>replay</mat-icon>
-  </button>
-
-  <span class="spacer"></span>
-
-</mat-toolbar>
+<button mat-icon-button disabled>
+  <mat-icon inline>replay</mat-icon>
+</button>
