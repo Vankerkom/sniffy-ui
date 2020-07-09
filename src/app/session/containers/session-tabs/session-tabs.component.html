@@ -1,0 +1,7 @@
+<a class="tab" *ngIf="packetTabEnabled$ | async" [routerLink]="['/sessions', sessionId]" routerLinkActive="active">
+  Packets
+</a>
+
+<a class="tab" *ngIf="messageTabEnabled$ | async" [routerLink]="['/sessions', sessionId, '/messages']" routerLinkActive="active">
+  Messages
+</a>

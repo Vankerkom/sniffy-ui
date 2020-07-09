@@ -29,18 +29,3 @@ app-hex-box {
 .sidebar {
   width: 340px;
 }
-
-.tabs {
-  display: flex;
-
-  .tab {
-    margin: 1em;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #aaa;
-  }
-
-  .active {
-    color: #fff;
-  }
-}

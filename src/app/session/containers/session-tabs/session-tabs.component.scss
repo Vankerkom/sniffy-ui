@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+
+  .tab {
+    margin: 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+
+  .active {
+    color: #fff;
+  }
+}

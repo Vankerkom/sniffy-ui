@@ -25,6 +25,7 @@ import { CharPipe } from './pipes/char.pipe';
 import { SelectionRangePipe } from './pipes/selection-range.pipe';
 import { DataInspectorComponent } from './components/data-inspector/data-inspector.component';
 import { SessionsSidebarSectionComponent } from './components/sessions-sidebar-section/sessions-sidebar-section.component';
+import { SessionTabsComponent } from './containers/session-tabs/session-tabs.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SessionsSidebarSectionComponent } from './components/sessions-sidebar-s
     SelectionRangePipe,
     DataInspectorComponent,
     SessionsSidebarSectionComponent,
+    SessionTabsComponent,
   ],
   imports: [
     CommonModule,

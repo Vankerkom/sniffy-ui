@@ -1,10 +1,7 @@
 <ng-container *ngIf="selectedSessionId$ | async as selectedSessionId">
   <div class="left">
 
-    <div class="tabs">
-      <a class="tab" [routerLink]="['/sessions', selectedSessionId]" routerLinkActive="active">Packets</a>
-      <a class="tab" [routerLink]="['/sessions', selectedSessionId, '/messages']" routerLinkActive="active" >Messages</a>
-    </div>
+    <app-session-tabs [sessionId]="selectedSessionId"></app-session-tabs>
 
     <app-session-packets-list
       [dataSource]="messagePackets$ | async"
