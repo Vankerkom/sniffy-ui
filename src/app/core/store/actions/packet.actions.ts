@@ -17,6 +17,6 @@ export const loadPacketsFailure = createAction(
 );
 
 export const packetReceived = createAction(
-  '[WebSocket Event] Message Packet Received',
+  '[WebSocket Event] Packet Received',
   props<{ payload: Packet }>()
 );

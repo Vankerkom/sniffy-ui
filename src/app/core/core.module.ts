@@ -12,6 +12,8 @@ import { SessionEffects } from './store/effects/session.effects';
 import { SnifferEffects } from './store/effects/sniffer.effects';
 import * as fromPacketMessage from './store/reducers/packet.reducer';
 import { PacketEffects } from './store/effects/packet.effects';
+import * as fromMessage from './store/reducers/message.reducer';
+import { MessageEffects } from './store/effects/message.effects';
 
 @NgModule({
   declarations: [],
@@ -27,6 +29,8 @@ import { PacketEffects } from './store/effects/packet.effects';
     !environment.production ? StoreDevtoolsModule.instrument({ }) : [],
     EffectsModule.forRoot([WebSocketEffects, SessionEffects, SnifferEffects, PacketEffects]),
     StoreRouterConnectingModule.forRoot(),
+    StoreModule.forFeature(fromMessage.messageFeatureKey, fromMessage.reducer),
+    EffectsModule.forFeature([MessageEffects]),
   ],
 })
 export class CoreModule {
