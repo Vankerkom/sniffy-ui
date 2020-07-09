@@ -28,3 +28,8 @@ export const selectSelectedMessageId = createSelector(
   selectSelectedSession,
   (session) => session.selectedMessageId
 );
+
+export const selectSelectedSessionProtocolId = createSelector(
+  selectSelectedSession,
+  session => session && session.protocolId
+);
