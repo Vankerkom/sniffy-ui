@@ -42,7 +42,7 @@ export class SelectDeviceModalComponent implements OnInit {
   }
 
   displayFnDevices(device: Device): string {
-    return (device && device.name) || '';
+    return (device && device.description) || (device && device.name)  || '';
   }
 
   displayFnProtocols(protocol: Protocol): string {

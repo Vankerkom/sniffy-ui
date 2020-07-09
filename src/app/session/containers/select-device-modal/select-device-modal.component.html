@@ -10,7 +10,7 @@
           [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnDevices">
           <mat-option *ngFor="let option of devices$ | async" [value]="option">
-            {{ option.name }}
+            {{ option.description || option.name }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
