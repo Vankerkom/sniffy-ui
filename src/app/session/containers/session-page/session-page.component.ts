@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, EMPTY } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
-import { MessagePacket } from '@app/core/models';
+import { Packet } from '@app/core/models';
 import { PacketMessageSelectors } from '@app/core/store/selectors';
 import * as sessionSelectors from '@app/core/store/selectors/session.selectors';
 import { SessionPageActions } from '@app/session/store/actions';
@@ -17,7 +17,7 @@ export class SessionPageComponent implements OnInit {
   selectedBuffer: ArrayBuffer | null = null;
 
   selectedSessionId$: Observable<number | null>;
-  messagePackets$: Observable<Array<MessagePacket>>;
+  messagePackets$: Observable<Array<Packet>>;
   selectedPayload$: Observable<ArrayBuffer>;
 
   constructor(private readonly store: Store<any>) {}

@@ -1,4 +1,4 @@
-export interface MessagePacket {
+export interface Packet {
   id: string;
   sessionId: number;
   timestamp: Date;

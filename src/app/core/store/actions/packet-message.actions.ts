@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { MessagePacket } from '@app/core/models/message-packet';
+import { Packet } from '@app/core/models/packet';
 
 export const loadPacketMessages = createAction(
   '[Packet Message] Load Packet Messages',
@@ -8,12 +8,12 @@ export const loadPacketMessages = createAction(
 
 export const loadPacketMessagesSuccess = createAction(
   '[Packet Message] Load Packet Messages Success',
-  props<{ sessionId: number; payload: Array<MessagePacket> }>()
+  props<{ sessionId: number; payload: Array<Packet> }>()
 );
 
 export const messagePacketReceived = createAction(
   '[Packet Message] Message Packet Received',
-  props<{ payload: MessagePacket }>()
+  props<{ payload: Packet }>()
 );
 
 

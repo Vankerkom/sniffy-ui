@@ -2,18 +2,18 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as PacketMessageActions from '../actions/packet-message.actions';
-import { MessagePacket } from '@app/core/models';
+import { Packet } from '@app/core/models';
 
 export const packetMessageFeatureKey = 'messagePacket';
 
-export const adapter: EntityAdapter<MessagePacket> = createEntityAdapter<
-  MessagePacket
+export const adapter: EntityAdapter<Packet> = createEntityAdapter<
+  Packet
 >({
   selectId: (messagePacket) => messagePacket.id,
   sortComparer: false,
 });
 
-export interface State extends EntityState<MessagePacket> {
+export interface State extends EntityState<Packet> {
   loadedSessions: Array<number>;
 }
 

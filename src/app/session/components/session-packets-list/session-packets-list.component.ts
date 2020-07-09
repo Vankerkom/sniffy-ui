@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MessagePacket } from '@app/core/models';
+import { Packet } from '@app/core/models';
 
 @Component({
   selector: 'app-session-packets-list',
@@ -7,15 +7,15 @@ import { MessagePacket } from '@app/core/models';
   styleUrls: ['./session-packets-list.component.scss'],
 })
 export class SessionPacketsListComponent {
-  @Input() dataSource: Array<MessagePacket> = [];
+  @Input() dataSource: Array<Packet> = [];
 
   @Output() selectMessage = new EventEmitter<string>();
 
-  trackByFn(index: number, item: MessagePacket): string {
+  trackByFn(index: number, item: Packet): string {
     return item.id;
   }
 
-  onRowClicked(messagePacket: MessagePacket): void {
+  onRowClicked(messagePacket: Packet): void {
     this.selectMessage.emit(messagePacket.id);
   }
 }

@@ -2,7 +2,7 @@
 
   <ng-container cdkColumnDef="timestamp">
     <cdk-header-cell *cdkHeaderCellDef> Timestamp </cdk-header-cell>
-    <cdk-cell *cdkCellDef="let row"> {{ row.timestamp | date: 'yy/MM/dd HH:mm:ss.SSS' }} </cdk-cell>
+    <cdk-cell *cdkCellDef="let row"> {{ row.timestamp | date: 'yyyy/MM/dd HH:mm:ss.SSS' }} </cdk-cell>
   </ng-container>
 
   <ng-container cdkColumnDef="inbound">

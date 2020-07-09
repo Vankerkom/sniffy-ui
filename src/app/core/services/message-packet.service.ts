@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MessagePacket } from '../models';
+import { Packet } from '../models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
 
@@ -8,8 +8,8 @@ import { environment } from '@environments/environment';
   providedIn: 'root',
 })
 export class MessagePacketService {
-  loadMessage(sessionId: number): Observable<Array<MessagePacket>> {
-    return this.http.get<Array<MessagePacket>>(
+  loadMessage(sessionId: number): Observable<Array<Packet>> {
+    return this.http.get<Array<Packet>>(
       `${environment.apiBaseUri}/sessions/${sessionId}/message-packets`
     );
   }
