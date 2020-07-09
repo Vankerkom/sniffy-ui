@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
-import { EMPTY, of } from 'rxjs';
 
-import * as PacketMessageActions from '../actions/packet-message.actions';
+import * as PacketMessageActions from '../actions/packet.actions';
 import { MessagePacketService } from '@app/core/services/message-packet.service';
 
 @Injectable()
-export class PacketMessageEffects {
+export class PacketEffects {
   loadPacketMessages$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(PacketMessageActions.loadPacketMessages),
+      ofType(PacketMessageActions.loadPackets),
       concatMap((action) =>
         this.messagePacketService.loadMessage(action.sessionId).pipe(
           map((payload) =>
-            PacketMessageActions.loadPacketMessagesSuccess({
+            PacketMessageActions.loadPacketsSuccess({
               sessionId: action.sessionId,
               payload,
             })
           ),
           catchError((error) =>
             of(
-              PacketMessageActions.loadPacketMessagesFailure({
+              PacketMessageActions.loadPacketsFailure({
                 sessionId: action.sessionId,
                 error,
               })

@@ -1,4 +1,4 @@
-import * as PacketMessageSelectors from './packet-message.selectors';
+import * as PacketMessageSelectors from './packet.selectors';
 import * as RouterSelectors from './router.selectors';
 import * as SessionSelectors from './session.selectors';
 import * as SnifferSelectors from './session.selectors';
