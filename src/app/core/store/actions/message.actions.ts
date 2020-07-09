@@ -6,7 +6,7 @@ export const loadMessages = createAction(
 );
 
 export const loadMessagesSuccess = createAction(
-  '[Message API] Load Messages Success',
+  '[Message API] Load Messagess Success',
   props<{ data: Array<Message> }>()
 );
 

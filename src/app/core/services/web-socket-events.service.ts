@@ -12,6 +12,7 @@ import {
   SessionActions,
   SnifferActions,
   WebSocketActions,
+  MessageActions,
 } from '../store/actions';
 
 const EVENT_TYPES_MAP = new Map<number, string>([
@@ -20,6 +21,7 @@ const EVENT_TYPES_MAP = new Map<number, string>([
   [EventId.SESSION_UPDATE, SessionActions.sessionUpdateSuccess.type],
   [EventId.SESSION_DELETE, SessionActions.sessionDeleteSuccess.type],
   [EventId.PACKET_RECEIVED, PacketActions.packetReceived.type],
+  [EventId.MESSAGE_RECEIVED, MessageActions.messageReceived.type],
 ]);
 
 @Injectable({
