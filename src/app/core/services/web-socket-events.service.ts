@@ -19,7 +19,7 @@ const EVENT_TYPES_MAP = new Map<number, string>([
   [EventId.SESSION_CREATE, SessionActions.sessionCreateSuccess.type],
   [EventId.SESSION_UPDATE, SessionActions.sessionUpdateSuccess.type],
   [EventId.SESSION_DELETE, SessionActions.sessionDeleteSuccess.type],
-  [EventId.MESSAGE_PACKET_RECEIVED, PacketActions.packetReceived.type],
+  [EventId.PACKET_RECEIVED, PacketActions.packetReceived.type],
 ]);
 
 @Injectable({
