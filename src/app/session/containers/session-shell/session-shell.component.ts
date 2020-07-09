@@ -7,6 +7,7 @@ import { SnifferActions } from '@core/store/actions';
 import * as SnifferSelectors from '@app/core/store/selectors/sniffer.selectors';
 import { Session } from '@app/core/models';
 import { SessionSelectors } from '@app/core/store/selectors';
+import { ProtocolActions } from '@app/session/store/actions';
 
 @Component({
   selector: 'app-session-shell',
@@ -23,6 +24,7 @@ export class SessionShellComponent implements OnInit {
   ngOnInit(): void {
     this.snifferActive$ = this.store.pipe(select(SnifferSelectors.selectActive));
     this.sessions$ = this.store.pipe(select(SessionSelectors.selectAll));
+    this.store.dispatch(ProtocolActions.loadProtocols());
   }
 
   start(): void {

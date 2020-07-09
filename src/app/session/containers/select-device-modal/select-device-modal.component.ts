@@ -51,7 +51,6 @@ export class SelectDeviceModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(DeviceActions.loadDevices());
-    this.store.dispatch(ProtocolActions.loadProtocols());
 
     this.loadedDevices$ = this.store.pipe(
       select(DevicesSelectors.selectLoaded)

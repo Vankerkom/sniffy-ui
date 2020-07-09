@@ -3,10 +3,10 @@ import * as ProtocolSelectors from './protocol.selectors';
 
 export const selectPacketTabEnabled = createSelector(
   ProtocolSelectors.selectSessionProtocol,
-  protocol => protocol.packetViewEnabled,
+  protocol => protocol && protocol.packetViewEnabled,
 );
 
 export const selectMessageTabEnabled = createSelector(
   ProtocolSelectors.selectSessionProtocol,
-  protocol => protocol.messageViewEnabled,
+  protocol => protocol && protocol.messageViewEnabled,
 );
