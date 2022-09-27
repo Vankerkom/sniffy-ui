@@ -12,7 +12,7 @@ import {
   ProtocolsSelectors,
 } from '@app/session/store/selectors';
 import { DeviceActions, ProtocolActions } from '@app/session/store/actions';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { StartSniffingRequest } from '@app/core/models';
 
 @Component({
@@ -27,12 +27,12 @@ export class SelectDeviceModalComponent implements OnInit {
   devices$: Observable<Array<Device>>;
   protocols$: Observable<Array<Protocol>>;
 
-  selectDeviceForm: FormGroup;
+  selectDeviceForm: UntypedFormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private readonly store: Store<any>,
-    private readonly fb: FormBuilder,
+    private readonly fb: UntypedFormBuilder,
     private readonly dialogRef: MatDialogRef<SelectDeviceModalComponent>
   ) {
     this.selectDeviceForm = this.fb.group({
