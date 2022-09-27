@@ -7,7 +7,7 @@ import { Packet } from '@app/core/models';
   styleUrls: ['./session-packets-list.component.scss'],
 })
 export class SessionPacketsListComponent {
-  @Input() dataSource: Array<Packet> = [];
+  @Input() dataSource: Packet[] = [];
 
   @Output() selectMessage = new EventEmitter<string>();
 

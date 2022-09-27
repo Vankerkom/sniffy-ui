@@ -2,10 +2,10 @@
 
   <div class="header">
     <h1>Sessions</h1>
-    <app-action-bar [active]="snifferActive$ | async" (start)="start()" (stop)="stop()"></app-action-bar>
+    <app-action-bar [active]="(snifferActive$ | async) ?? false" (start)="start()" (stop)="stop()"></app-action-bar>
   </div>
 
-  <app-sessions-sidebar-section [sessions]="sessions$ | async"></app-sessions-sidebar-section>
+  <app-sessions-sidebar-section [sessions]="(sessions$ | async) ?? []"></app-sessions-sidebar-section>
 </div>
 
 <div class="content">

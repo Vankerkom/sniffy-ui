@@ -16,14 +16,12 @@ import { ProtocolActions } from '@app/session/store/actions';
 })
 export class SessionShellComponent implements OnInit {
 
-  snifferActive$: Observable<boolean>;
-  sessions$: Observable<Array<Session>>;
+  readonly snifferActive$: Observable<boolean>  = this.store.pipe(select(SnifferSelectors.selectActive));
+  readonly sessions$: Observable<Session[]> = this.store.pipe(select(SessionSelectors.selectAll));
 
   constructor(private readonly store: Store<fromRoot.State>) {}
 
   ngOnInit(): void {
-    this.snifferActive$ = this.store.pipe(select(SnifferSelectors.selectActive));
-    this.sessions$ = this.store.pipe(select(SessionSelectors.selectAll));
     this.store.dispatch(ProtocolActions.loadProtocols());
   }
 

@@ -8,7 +8,7 @@ import { Session } from '@app/core/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SessionsSidebarSectionComponent {
-  @Input() sessions: Array<Session>;
+  @Input() sessions: Session[] = [];
 
   trackByFn(index: number, item: Session): string {
     return item.id.toString(10);

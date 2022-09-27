@@ -4,12 +4,14 @@
     <app-session-tabs [sessionId]="selectedSessionId"></app-session-tabs>
 
     <app-session-packets-list
-      [dataSource]="messagePackets$ | async"
+      *ngIf="messagePackets$ | async as messagePacket"
+      [dataSource]="messagePacket"
       (selectMessage)="packetMessageSelected(selectedSessionId, $event)"
     ></app-session-packets-list>
 
     <app-hex-box
-      [data]="selectedPayload$ | async"
+      *ngIf="selectedPayload$ | async as selectedPayload"
+      [data]="selectedPayload"
       (selectionChanged)="changeHexSelection($event)"
     ></app-hex-box>
 
@@ -20,7 +22,7 @@
 
   <app-data-inspector
     [buffer]="selectedBuffer"
-    littleEndian="true"
+    [littleEndian]="true"
   ></app-data-inspector>
 
   <app-data-inspector [buffer]="selectedBuffer"></app-data-inspector>

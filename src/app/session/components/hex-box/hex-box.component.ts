@@ -13,8 +13,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HexBoxComponent {
-  _byteArray: Uint8Array = new Uint8Array(128);
-  _offsets: Array<any>;
+  protected _byteArray: Uint8Array = new Uint8Array(128);
+  protected _offsets: Array<any> = [];
 
   @Input() set data(data: ArrayBuffer) {
     this._byteArray = new Uint8Array(data);
@@ -30,10 +30,6 @@ export class HexBoxComponent {
   selectionStart = -1;
   selectionEnd = -1;
   selecting = false;
-
-  trackByFn(index, item) {
-    return index;
-  }
 
   setCursorIndex(newCursorIndex: number): void {
     this.hoverIndex = newCursorIndex;
@@ -80,5 +76,9 @@ export class HexBoxComponent {
     return startIndex >= 0 && endIndex >= 0
       ? this._byteArray.buffer.slice(startIndex, endIndex)
       : null;
+  }
+
+  trackByFn(index: number, value: unknown): number {
+    return index;
   }
 }

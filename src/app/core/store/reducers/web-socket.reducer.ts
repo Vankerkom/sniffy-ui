@@ -12,10 +12,7 @@ export const initialState: State = {
   connected: false,
 };
 
-export const reducer = createReducer<
-  State,
-  WebSocketActions.WebSocketActionsUnion
->(
+export const reducer = createReducer(
   initialState,
 
   on(WebSocketActions.connected, (state) => ({ ...state, connected: true })),

@@ -1,19 +1,19 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Device, Protocol } from '@app/session/models';
+import {Store, select} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Device, Protocol} from '@app/session/models';
 import {
   DevicesSelectors,
   ProtocolsSelectors,
 } from '@app/session/store/selectors';
-import { DeviceActions, ProtocolActions } from '@app/session/store/actions';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { StartSniffingRequest } from '@app/core/models';
+import {DeviceActions, ProtocolActions} from '@app/session/store/actions';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {StartSniffingRequest} from '@app/core/models';
 
 @Component({
   selector: 'app-select-device-modal',
@@ -21,11 +21,11 @@ import { StartSniffingRequest } from '@app/core/models';
   styleUrls: ['./select-device-modal.component.scss'],
 })
 export class SelectDeviceModalComponent implements OnInit {
-  loadedDevices$: Observable<boolean>;
-  loadedProtocols$: Observable<boolean>;
 
-  devices$: Observable<Array<Device>>;
-  protocols$: Observable<Array<Protocol>>;
+  readonly loadedDevices$: Observable<boolean> = this.store.select(DevicesSelectors.selectLoaded);
+  readonly loadedProtocols$: Observable<boolean> = this.store.select(ProtocolsSelectors.selectLoaded);
+  readonly devices$: Observable<Device[]> = this.store.select(DevicesSelectors.selectAll);
+  readonly protocols$: Observable<Protocol[]> = this.store.select(ProtocolsSelectors.selectAll);
 
   selectDeviceForm: UntypedFormGroup;
 
@@ -42,7 +42,7 @@ export class SelectDeviceModalComponent implements OnInit {
   }
 
   displayFnDevices(device: Device): string {
-    return (device && device.description) || (device && device.name)  || '';
+    return (device && device.description) || (device && device.name) || '';
   }
 
   displayFnProtocols(protocol: Protocol): string {
@@ -51,15 +51,6 @@ export class SelectDeviceModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(DeviceActions.loadDevices());
-
-    this.loadedDevices$ = this.store.pipe(
-      select(DevicesSelectors.selectLoaded)
-    );
-    this.loadedProtocols$ = this.store.pipe(
-      select(ProtocolsSelectors.selectLoaded)
-    );
-    this.devices$ = this.store.pipe(select(DevicesSelectors.selectAll));
-    this.protocols$ = this.store.pipe(select(ProtocolsSelectors.selectAll));
   }
 
   onSubmit(): void {

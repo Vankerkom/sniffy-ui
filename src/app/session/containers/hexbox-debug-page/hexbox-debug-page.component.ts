@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hexbox-debug-page.component.scss'],
 })
 export class HexboxDebugPageComponent implements OnInit {
-  dataBuffer = [
+  dataBuffer = new Uint8Array([
     129,
     18,
     18,
@@ -39,7 +39,7 @@ export class HexboxDebugPageComponent implements OnInit {
     38,
     68,
     126,
-  ];
+  ]);
   selectionData: any;
 
   constructor() {}

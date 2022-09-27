@@ -13,28 +13,14 @@ import { map } from 'rxjs/operators';
   templateUrl: './session-page.component.html',
   styleUrls: ['./session-page.component.scss'],
 })
-export class SessionPageComponent implements OnInit {
+export class SessionPageComponent {
   selectedBuffer: ArrayBuffer | null = null;
 
-  selectedSessionId$: Observable<number | null>;
-  messagePackets$: Observable<Array<Packet>>;
-  selectedPayload$: Observable<ArrayBuffer>;
+  readonly selectedSessionId$: Observable<number | null> = this.store.pipe(select(sessionSelectors.selectSelectedSessionId),  map(Number));
+  readonly messagePackets$: Observable<Packet[]> = this.store.pipe(select(PacketMessageSelectors.selectAllForActiveSession));
+  readonly selectedPayload$: Observable<ArrayBuffer> = this.store.pipe(select(PacketMessageSelectors.selectSelectedMessageArrayBuffer));
 
   constructor(private readonly store: Store<any>) {}
-
-  ngOnInit(): void {
-    this.selectedSessionId$ = this.store.pipe(
-      select(sessionSelectors.selectSelectedSessionId),
-      map(Number)
-    );
-    this.messagePackets$ = this.store.pipe(
-      select(PacketMessageSelectors.selectAllForActiveSession)
-    );
-
-    this.selectedPayload$ = this.store.pipe(
-      select(PacketMessageSelectors.selectSelectedMessageArrayBuffer)
-    );
-  }
 
   changeHexSelection(event: ArrayBuffer | null): void {
     this.selectedBuffer = event;

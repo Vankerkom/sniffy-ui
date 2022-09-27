@@ -28,7 +28,7 @@ const EVENT_TYPES_MAP = new Map<number, string>([
   providedIn: 'root',
 })
 export class WebSocketEventsService {
-  private socket: WebSocketSubject<EventContainer>;
+  private socket: WebSocketSubject<EventContainer> | null = null;
 
   readonly opened$ = new Subject<Event>();
   readonly closed$ = new Subject<CloseEvent>();

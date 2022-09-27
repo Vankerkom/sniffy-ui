@@ -20,13 +20,12 @@ export const selectLoaded = createSelector(
 export const selectSelectedSession = createSelector(
   selectEntities,
   selectSelectedSessionId,
-  (entities, selectedSessionId) =>
-    selectedSessionId && entities[selectedSessionId]
+  (entities, selectedSessionId) => (selectedSessionId && entities[selectedSessionId]) || null
 );
 
 export const selectSelectedMessageId = createSelector(
   selectSelectedSession,
-  (session) => session.selectedMessageId
+  (session) => session?.selectedMessageId ?? null
 );
 
 export const selectSelectedSessionProtocolId = createSelector(

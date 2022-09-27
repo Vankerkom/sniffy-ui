@@ -1,12 +1,6 @@
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer,
-} from '@ngrx/store';
+import {ActionReducerMap, MetaReducer,} from '@ngrx/store';
 
-import { environment } from '@environments/environment';
+import {environment} from '@environments/environment';
 import * as fromRouter from '@ngrx/router-store';
 import * as fromPacket from './packet.reducer';
 import * as fromWebSocket from './web-socket.reducer';

@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Message} from '../../models';
+import {Message} from '@app/core/models';
 
 export const loadMessages = createAction(
   '[Session Page] Load Messages'
