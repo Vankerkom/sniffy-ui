@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { HexBoxComponent } from './hex-box.component';
 
@@ -6,7 +6,7 @@ describe('HexBoxComponent', () => {
   let component: HexBoxComponent;
   let fixture: ComponentFixture<HexBoxComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ HexBoxComponent ]
     })
