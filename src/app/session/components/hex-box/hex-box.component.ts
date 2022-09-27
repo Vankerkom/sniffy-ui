@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output,} from '@angular/core';
 
 @Component({
   selector: 'app-hex-box',
@@ -14,7 +8,7 @@ import {
 })
 export class HexBoxComponent {
   protected _byteArray: Uint8Array = new Uint8Array(128);
-  protected _offsets: Array<any> = [];
+  protected _offsets: Array<unknown> = [];
 
   @Input() set data(data: ArrayBuffer) {
     this._byteArray = new Uint8Array(data);
@@ -68,7 +62,6 @@ export class HexBoxComponent {
     const startIndex = Math.min(this.selectionStart, this.selectionEnd);
     const endIndex = Math.max(this.selectionStart, this.selectionEnd) + 1;
     const selectedBuffer = this.getSelectedBufferForRange(startIndex, endIndex);
-
     this.selectionChanged.emit(selectedBuffer);
   }
 
@@ -81,4 +74,5 @@ export class HexBoxComponent {
   trackByFn(index: number, value: unknown): number {
     return index;
   }
+
 }
