@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import {createAction, props} from '@ngrx/store';
+import {Message} from '../../models';
 
 export const loadMessages = createAction(
   '[Session Page] Load Messages'
@@ -7,12 +7,12 @@ export const loadMessages = createAction(
 
 export const loadMessagesSuccess = createAction(
   '[Message API] Load Messagess Success',
-  props<{ data: Array<Message> }>()
+  props<{ data: Message[] }>()
 );
 
 export const loadMessagesFailure = createAction(
   '[Message API] Load Messages Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );
 
 export const messageReceived = createAction(
