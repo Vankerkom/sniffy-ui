@@ -1,17 +1,10 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import {Store, select} from '@ngrx/store';
+import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef,} from '@angular/material/dialog';
+import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Device, Protocol} from '@app/session/models';
-import {
-  DevicesSelectors,
-  ProtocolsSelectors,
-} from '@app/session/store/selectors';
-import {DeviceActions, ProtocolActions} from '@app/session/store/actions';
+import {DevicesSelectors, ProtocolsSelectors,} from '@app/session/store/selectors';
+import {DeviceActions} from '@app/session/store/actions';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {StartSniffingRequest} from '@app/core/models';
 
@@ -19,6 +12,7 @@ import {StartSniffingRequest} from '@app/core/models';
   selector: 'app-select-device-modal',
   templateUrl: './select-device-modal.component.html',
   styleUrls: ['./select-device-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectDeviceModalComponent implements OnInit {
 
@@ -27,7 +21,7 @@ export class SelectDeviceModalComponent implements OnInit {
   readonly devices$: Observable<Device[]> = this.store.select(DevicesSelectors.selectAll);
   readonly protocols$: Observable<Protocol[]> = this.store.select(ProtocolsSelectors.selectAll);
 
-  selectDeviceForm: UntypedFormGroup;
+  readonly selectDeviceForm: UntypedFormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -61,4 +55,13 @@ export class SelectDeviceModalComponent implements OnInit {
       } as StartSniffingRequest);
     }
   }
+
+  trackByDevices(index: number, device: Device): string {
+    return device.name;
+  }
+
+  trackByProtocols(index: number, protocol: Protocol): string {
+    return `${protocol.id}`;
+  }
+
 }

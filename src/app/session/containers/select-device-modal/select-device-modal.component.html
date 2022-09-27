@@ -9,7 +9,7 @@
         <input type="text" placeholder="Select a network device" matInput formControlName="device"
           [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnDevices">
-          <mat-option *ngFor="let option of devices$ | async" [value]="option">
+          <mat-option *ngFor="let option of devices$ | async; trackBy: trackByDevices" [value]="option">
             {{ option.description || option.name }}
           </mat-option>
         </mat-autocomplete>
@@ -20,7 +20,7 @@
       <mat-form-field>
         <input type="text" placeholder="Select a protocol" matInput formControlName="protocol" [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnProtocols">
-          <mat-option *ngFor="let option of protocols$ | async" [value]="option">
+          <mat-option *ngFor="let option of protocols$ | async; trackBy: trackByProtocols" [value]="option">
             {{ option.name }}
           </mat-option>
         </mat-autocomplete>
