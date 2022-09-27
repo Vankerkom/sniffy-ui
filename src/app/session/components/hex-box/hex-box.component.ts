@@ -8,7 +8,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output,} from '
 })
 export class HexBoxComponent {
   protected _byteArray: Uint8Array = new Uint8Array(128);
-  protected _offsets: Array<unknown> = [];
+  protected _offsets: Array<number> = [];
 
   @Input() set data(data: ArrayBuffer) {
     this._byteArray = new Uint8Array(data);
